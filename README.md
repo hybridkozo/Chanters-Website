@@ -6,3 +6,5 @@ Hello my name is John!!
 And my name is George!
 
 new branch!!
+
+second change in same branch
