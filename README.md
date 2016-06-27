@@ -5,10 +5,4 @@ Hello my name is John!!
 
 And my name is George!
 
-<<<<<<< HEAD
-Added branch
-=======
-new branch!!
-
-second change in same branch
->>>>>>> 740beddcb0929bf783284ccfca68c86024d7949a
+test test 
