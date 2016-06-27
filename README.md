@@ -4,5 +4,3 @@ A website for fine collection chanters. Project for lesson "Developing applicati
 Hello my name is John!!
 
 And my name is George!
-
-test test 
