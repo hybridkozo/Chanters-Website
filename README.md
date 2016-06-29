@@ -16,5 +16,3 @@ Added branch
 test test test
 a new branch this is
 fsdfsdfsdfsdf
-
-![code for country](codeforvictory.jpg)
