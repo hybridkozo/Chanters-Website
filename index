@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Σύλογος Ιεροψαλτών</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+</head>
+<body>
+    <div class="container">
+		<div class="row">
+			<div class="col-md-11">
+			<h1> Header </h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-11">
+			<h1> menu </h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-7">
+			<h1> articles </h1>
+			</div>
+			<div class="col-md-4">
+			<h1> Gagets </h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-11">
+			<h1> Footer </h1>
+			</div>
+		</div>
+	</div>
+	<script src="js/jquery-3.0.0.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</body>
+</html
