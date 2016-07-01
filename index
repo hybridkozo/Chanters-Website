@@ -11,137 +11,137 @@
 <body>
     <div class="container">
 		<div class="page-header">
-		<h1>
-		<img src="media/images/logo.gif" class="img-rounded" alt="Σύλογος Ιεροψαλτών" width="100" height="120">
-		Σύλογος Ιεροψαλτών Αθηνών</h1>
-		<p>Ο Σύλογος Ιεροψαλτών Αθηνών είναι δίπλα σας από το 1924.</p>
-		<nav class="navbar navbar-inverse">
-			<div class="container-fluid">
-				<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>			
-				</div>
-			<div class="collapse navbar-collapse" id="myNavbar">
-				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Αρχική</a></li>
-					<li class="dropdown">
-							<a class="dropdown-toggle" data-toggle="dropdown" href="#">Ο Σύλογος μας <span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">Η Ιστορία μας</a></li>
-							<li><a href="#">Κανονισμός Ιεροψαλτών</a></li>
-							<li><a href="#">Δοιηκητικό Συμβούλιο</a></li>
+			<h1>
+				<img src="media/images/logo.gif" class="img-rounded" alt="Σύλογος Ιεροψαλτών" width="100" height="120">
+				Σύλογος Ιεροψαλτών Αθηνών
+			</h1>
+			<p>Ο Σύλογος Ιεροψαλτών Αθηνών είναι δίπλα σας από το 1924.</p>
+			<nav class="navbar navbar-inverse">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						</button>			
+					</div>
+					<div class="collapse navbar-collapse"  id="myNavbar">
+						<ul class="nav navbar-nav">
+							<li class="active"><a href="#">Αρχική</a></li>
+							<li class="dropdown">
+								<a class="dropdown-toggle" data-toggle="dropdown" href="#">Ο Σύλογος μας <span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li><a href="#">Η Ιστορία μας</a></li>
+									<li><a href="#">Κανονισμός Ιεροψαλτών</a></li>
+									<li><a href="#">Δοιηκητικό Συμβούλιο</a></li>
+								</ul>
+							</li>
+							<li><a href="#">Τα νέα μας</a></li>
+							<li><a href="#">Επικοινωνία</a></li>
 						</ul>
-					</li>
-					<li><a href="#">Τα νέα μας</a></li>
-					<li><a href="#">Επικοινωνία</a></li>
-				</ul>
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-user"></span> Εγγραφή</a>
+						<ul class="nav navbar-nav navbar-right">
+							<li><a href="#" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-user"></span> Εγγραφή</a>
 						<!-- Modal -->
-						<div class="modal fade" id="myModal" role="dialog">
-							<div class="modal-dialog">
+								<div class="modal fade" id="myModal" role="dialog">
+									<div class="modal-dialog">
     
 							<!-- Modal content-->
-							<div class="modal-content">
-							<div class="modal-header">
-							<h4 class="modal-title">Εγγραφή Χρήστη</h4>
-							</div>
-							<div class="modal-body">
-								<form class="form-horizontal" role="form">
-									<div class="form-group">
-										<label class="control-label col-sm-2" for="name">Όνομα:</label>
-										<div class="col-sm-10">
-											<input type="text" class="form-control" id="regName" placeholder="π.χ. Ιωάννης">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h4 class="modal-title">Εγγραφή Χρήστη</h4>
+											</div>
+											<div class="modal-body">
+												<form class="form-horizontal" role="form">
+													<div class="form-group">
+														<label class="control-label col-sm-2" for="name">Όνομα:</label>
+															<div class="col-sm-10">
+																<input type="text" class="form-control" id="regName" placeholder="π.χ. Ιωάννης">
+															</div>
+													</div>
+													<div class="form-group">
+														<label class="control-label col-sm-2" for="surname">Επώνυμο:</label>
+															<div class="col-sm-10">
+																<input type="text" class="form-control" id="regSurname" placeholder="π.χ. Κοζομπόλης">
+															</div>
+													</div>
+													<div class="form-group">
+														<label class="control-label col-sm-2" for="telephone">Τηλέφωνο:</label>
+															<div class="col-sm-10">
+																<input type="tel" class="form-control" id="regTelephone" placeholder="π.χ. 6971903121">
+															</div>
+													</div>	
+													<div class="form-group">
+														<label class="control-label col-sm-2" for="email">E-mail:</label>
+															<div class="col-sm-10">
+																<input type="email" class="form-control" id="regEmail" placeholder="π.χ. g.kozompolis@gmail.com">
+															</div>
+													</div>	
+													<div class="form-group">
+														<label class="control-label col-sm-2" for="password">Κωδικός:</label>
+															<div class="col-sm-10">
+																<input type="password" class="form-control" maxlength="8" id="regPasswod" placeholder="π.χ. 1990!asQ">
+															</div>
+													</div>
+													<div class="form-group">
+														<label class="control-label col-sm-2" for="password">Re-Type:</label>
+															<div class="col-sm-10">
+																<input type="password" class="form-control" maxlength="8" id="regPassword" placeholder="π.χ. 1990!asQ">
+															</div>
+													</div>
+											</div>
+											<div class="modal-footer">
+												<div class="form-group" >
+													<button type="button" class="btn btn-success">Εγγραφή</button>
+													<button type="button" class="btn btn-danger" data-dismiss="modal">Ακύρωση</button>
+												</div>
+											</div>
 										</div>
-									</div>
-									<div class="form-group">
-										<label class="control-label col-sm-2" for="surname">Επώνυμο:</label>
-										<div class="col-sm-10">
-											<input type="text" class="form-control" id="regSurname" placeholder="π.χ. Κοζομπόλης">
-										</div>
-									</div>
-									<div class="form-group">
-										<label class="control-label col-sm-2" for="telephone">Τηλέφωνο:</label>
-										<div class="col-sm-10">
-											<input type="tel" class="form-control" id="regTelephone" placeholder="π.χ. 6971903121">
-										</div>
-									</div>	
-									<div class="form-group">
-										<label class="control-label col-sm-2" for="email">E-mail:</label>
-										<div class="col-sm-10">
-											<input type="email" class="form-control" id="regEmail" placeholder="π.χ. g.kozompolis@gmail.com">
-										</div>
-									</div>	
-									<div class="form-group">
-										<label class="control-label col-sm-2" for="password">Κωδικός:</label>
-										<div class="col-sm-10">
-											<input type="password" class="form-control" maxlength="8" id="regPasswod" placeholder="π.χ. 1990!asQ">
-										</div>
-									</div>
-									<div class="form-group">
-										<label class="control-label col-sm-2" for="password">Επαναπληκτρολόγηση κωδικού:</label>
-										<div class="col-sm-10">
-											<input type="password" class="form-control" maxlength="8" id="regPasswod" placeholder="π.χ. 1990!asQ">
-										</div>
-									</div>
-											
-							</div>
-							<div class="modal-footer">
-							<button type="button" class="btn btn-default" data-dismiss="modal">Εγγραφή</button>
-							<button type="button" class="btn btn-default" data-dismiss="modal">Ακύρωση</button>
-						</div>
-					</div>
       
-    </div>
-  </div>
-					</li>
-					<li><a href="#" data-toggle="modal" data-target="#myModal2"><span class="glyphicon glyphicon-log-in"></span> Είσοδος</a>
-							<div class="modal fade" id="myModal2" role="dialog">
-							<div class="modal-dialog">
+									</div>
+								</div>
+							</li>
+							<li><a href="#" data-toggle="modal" data-target="#myModal2"><span class="glyphicon glyphicon-log-in"></span> Είσοδος</a>
+						<!-- Modal -->
+								<div class="modal fade" id="myModal2" role="dialog">
+									<div class="modal-dialog">
     
 							<!-- Modal content-->
-							<div class="modal-content">
-							<div class="modal-header">
-							<h4 class="modal-title">Είσοδος Χρήστη</h4>
-							</div>
-							<div class="modal-body">
-								<form class="form-horizontal" role="form">
-									
-									<div class="form-group">
-										<label class="control-label col-sm-2" for="email">E-mail:</label>
-										<div class="col-sm-10">
-											<input type="email" class="form-control" id="logEmail" placeholder="π.χ. g.kozompolis@gmail.com">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h4 class="modal-title">Είσοδος Χρήστη</h4>
+											</div>
+											<div class="modal-body" style="height:200px;">
+												<form class="form-horizontal" role="form">
+													<div class="form-group">
+														<label class="control-label col-sm-2" for="email" style="margin:5px;">E-mail:</label>
+															<div class="col-sm-10">
+																<input type="email" class="form-control" id="logEmail" placeholder="π.χ. g.kozompolis@gmail.com" style="margin:5px;">
+															</div>
+													</div>	
+													<div class="form-group">
+														<label class="control-label col-sm-2" for="password" style="margin:5px;">Κωδικός:</label>
+															<div class="col-sm-10">
+																<input type="password" class="form-control" maxlength="8" id="logPasswod" placeholder="π.χ. 1990!asQ" style="margin:5px;">
+															</div>
+													</div>
+											</div>
+											<div class="modal-footer">
+												<div class="form-group" >
+													<button type="button" class="btn btn-success">Είσοδος</button>
+													<button type="button" class="btn btn-danger" data-dismiss="modal">Ακύρωση</button>
+												</div>
+											</div>
 										</div>
-									</div>	
-									<div class="form-group">
-										<label class="control-label col-sm-2" for="password">Κωδικός:</label>
-										<div class="col-sm-10">
-											<input type="password" class="form-control" maxlength="8" id="logPassword" placeholder="π.χ. 1990!asQ">
-										</div>
-									</div>
-											
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-default" data-dismiss="modal">Είσοδος</button>
-								<button type="button" class="btn btn-default" data-dismiss="modal">Ακύρωση</button>
-							</div>
-							</div>
       
+									</div>
+								</div>
+							</li>
+						</ul>
+									</div>
 							</div>
-							</div>
-					
-					</li>
-				</ul>
 					</div>
-				</div>
 			</nav>
-		</div>
 	
-		
-		
 		<div class="row">
 			<div class="col-md-7">
 			<h1> articles </h1>
@@ -155,8 +155,8 @@
 			<h1> Footer </h1>
 			</div>
 		</div>
+			</div>
+		</div>
 	</div>
-	<script src="js/jquery-3.0.0.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
 </body>
 </html
