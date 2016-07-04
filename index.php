@@ -12,6 +12,7 @@
 <body>
     <div class="container">
 		<div class="page-header">
+		
 			<h1>
 				<img src="media/images/logo.gif" class="img-rounded" alt="Σύλογος Ιεροψαλτών" width="100" height="120">
 				Σύλογος Ιεροψαλτών Αθηνών
@@ -142,7 +143,18 @@
 							</div>
 					</div>
 			</nav>
-	
+			<?php
+				$dbhost = 'localhost:3306';
+				$dbuser = 'john';
+				$dbpass = 'giannis';
+				$conn = mysql_connect($dbhost, $dbuser, $dbpass);
+				if(!$conn){
+					die('could not connect: ' . mysql_error());
+				}
+				echo 'Connected to the database successfully';
+				mysql_close($conn);
+				
+			?>
 		<div class="row">
 			<div class="col-md-9">
 			<h1> articles </h1>
@@ -154,7 +166,7 @@
 			<hr>
 			</div>
 		</div>
-		<div class="footer" style="background-color:#1a1a1a;color:#cccccc;border-radius: 5px;margin:5px;">
+		<div class="footer" style="background-color:#1a1a1a;color:#cccccc;border-radius: 5px;">
 		<div class="row">
 			<div class="col-md-4">
 			<h3> Site Map </h3>
@@ -162,7 +174,7 @@
 				<ul >
 					<li > Αρχική</li>
 					<li > Ο Σύλογος μας</li> 
-					<li > Τα Νέα μας</li> 
+					<li > Τα νέα μας</li> 
 					<li > Επικοινωνία</li> 
 				</ul>
 			<hr>	
