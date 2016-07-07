@@ -1,8 +1,5 @@
-<?php
-header('Content-Type: text/html; charset=utf8');
-?>
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
 <head>
 <meta charset="utf-8">
 <title>Σύλογος Ιεροψαλτών</title>
@@ -10,7 +7,6 @@ header('Content-Type: text/html; charset=utf8');
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="css/custom.css">
 </head>
 <body>
     <div class="container">
@@ -30,192 +26,22 @@ header('Content-Type: text/html; charset=utf8');
 						<span class="icon-bar"></span>
 						</button>			
 					</div>
-					<div class="collapse navbar-collapse"  id="myNavbar">
-						<!--<ul class="nav navbar-nav">
-							<li class="active"><a href="#">Αρχική</a></li>
-							<li class="dropdown">
-								<a class="dropdown-toggle" data-toggle="dropdown" href="#">Ο Σύλογος μας <span class="caret"></span></a>
-								<ul class="dropdown-menu">
-									<li><a href="#">Η Ιστορία μας</a></li>
-									<li><a href="#">Κανονισμός Ιεροψαλτών</a></li>
-									<li><a href="#">Δοιηκητικό Συμβούλιο</a></li>
-								</ul>
-							</li>
-							<li><a href="#">Τα νέα μας</a></li>
-							<li><a href="#">Επικοινωνία</a></li>
-						</ul>
-						-->
-						
-						
-							
+					<div class="collapse navbar-collapse"  id="myNavbar">				
 				<?php
-				
-				$dbhost = 'localhost:3306';
-				$dbuser = 'john';
-				$dbpass = 'giannis';
-				$conn = mysql_connect($dbhost, $dbuser, $dbpass);
-				if(!$conn){
-					die('could not connect: ' . mysql_error());
-				}
-				
-				$sql='SELECT * FROM menu ORDER by sequence;';
-				
-				mysql_select_db('chanters');
-				mysql_query("SET NAMES 'utf8'");
-				$retval = mysql_query( $sql, $conn );
-				if(! $retval )
-				{
-					die('Could not get data: ' . mysql_error());
-				}
-				$i=0;
-				echo '<ul class="nav navbar-nav">';
-				while($row = mysql_fetch_array($retval, MYSQL_ASSOC)){
-					if ($i==0 and $row['submenu']==NULL){
-						echo '<li class="active"><a href="#">' . $row['name'] . '</a></li>';
-						
-					}
-					else if ($i>0 and $row['submenu']==NULL){
-					echo '<li><a href="#">' . $row['name'] . '</a></li>';
-					}
-					else
-					{
-						$id=$row['idmenu'];
-						$sql2="SELECT * FROM submenu WHERE idmenu='$id' ORDER BY sequence;" ;
-						$retval2 = mysql_query( $sql2, $conn );
-						if(! $retval2 )
-						{
-							die('Could not get data: ' . mysql_error());
-						}
-						if ($i==0){
-						echo '<li class="dropdown, active"><a class="dropdown-toggle" data-toggle="dropdown" href="#">' . $row['name'] . '<span class="caret"></span></a>';
-						}
-						else{
-							echo '<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">' . $row['name'] . '<span class="caret"></span></a>';
-						}
-						echo '<ul class="dropdown-menu">';
-						while($row2 = mysql_fetch_array($retval2, MYSQL_ASSOC)){
-							echo '<li><a href="#">' . $row2['name'] . '</a></li>';
-						}
-						echo "</ul>";
-						echo "</li>";
-						
-					}
-					
-					$i++;
-				}
-				echo "</ul>";
-				
-				mysql_close($conn);
-				
-			?>
-						
-						
-						
-						
-						
+				require_once("./include/dynamicmenu.php");
+				?>
 						<ul class="nav navbar-nav navbar-right">
-							<li><a href="#" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-user"></span> Εγγραφή</a>
-						<!-- Modal -->
-								<div class="modal fade" id="myModal" role="dialog">
-									<div class="modal-dialog">
-    
-							<!-- Modal content-->
-										<div class="modal-content">
-											<div class="modal-header">
-												<h4 class="modal-title">Εγγραφή Χρήστη</h4>
-											</div>
-											<div class="modal-body">
-												<form class="form-horizontal" role="form">
-													<div class="form-group">
-														<label class="control-label col-sm-2" for="name">Όνομα:</label>
-															<div class="col-sm-10">
-																<input type="text" class="form-control" id="regName" placeholder="π.χ. Ιωάννης">
-															</div>
-													</div>
-													<div class="form-group">
-														<label class="control-label col-sm-2" for="surname">Επώνυμο:</label>
-															<div class="col-sm-10">
-																<input type="text" class="form-control" id="regSurname" placeholder="π.χ. Κοζομπόλης">
-															</div>
-													</div>
-													<div class="form-group">
-														<label class="control-label col-sm-2" for="telephone">Τηλέφωνο:</label>
-															<div class="col-sm-10">
-																<input type="tel" class="form-control" id="regTelephone" placeholder="π.χ. 6971903121">
-															</div>
-													</div>	
-													<div class="form-group">
-														<label class="control-label col-sm-2" for="email">E-mail:</label>
-															<div class="col-sm-10">
-																<input type="email" class="form-control" id="regEmail" placeholder="π.χ. g.kozompolis@gmail.com">
-															</div>
-													</div>	
-													<div class="form-group">
-														<label class="control-label col-sm-2" for="password">Κωδικός:</label>
-															<div class="col-sm-10">
-																<input type="password" class="form-control" maxlength="8" id="regPasswod" placeholder="π.χ. 1990!asQ">
-															</div>
-													</div>
-													<div class="form-group">
-														<label class="control-label col-sm-2" for="password">Re-Type:</label>
-															<div class="col-sm-10">
-																<input type="password" class="form-control" maxlength="8" id="regPassword" placeholder="π.χ. 1990!asQ">
-															</div>
-													</div>
-											</div>
-											<div class="modal-footer">
-												<div class="form-group" >
-													<button type="button" class="btn btn-success">Εγγραφή</button>
-													<button type="button" class="btn btn-danger" data-dismiss="modal">Ακύρωση</button>
-												</div>
-											</div>
-										</div>
-      
-									</div>
-								</div>
+							<li><a href="register.php" ><span class="glyphicon glyphicon-user"></span> Εγγραφή</a>
 							</li>
-							<li><a href="#" data-toggle="modal" data-target="#myModal2"><span class="glyphicon glyphicon-log-in"></span> Είσοδος</a>
-						<!-- Modal -->
-								<div class="modal fade" id="myModal2" role="dialog">
-									<div class="modal-dialog">
-    
-							<!-- Modal content-->
-										<div class="modal-content">
-											<div class="modal-header">
-												<h4 class="modal-title">Είσοδος Χρήστη</h4>
-											</div>
-											<div class="modal-body" style="height:200px;">
-												<form class="form-horizontal" role="form">
-													<div class="form-group">
-														<label class="control-label col-sm-2" for="email" style="margin:5px;">E-mail:</label>
-															<div class="col-sm-10">
-																<input type="email" class="form-control" id="logEmail" placeholder="π.χ. g.kozompolis@gmail.com" style="margin:5px;">
-															</div>
-													</div>	
-													<div class="form-group">
-														<label class="control-label col-sm-2" for="password" style="margin:5px;">Κωδικός:</label>
-															<div class="col-sm-10">
-																<input type="password" class="form-control" maxlength="8" id="logPasswod" placeholder="π.χ. 1990!asQ" style="margin:5px;">
-															</div>
-													</div>
-											</div>
-											<div class="modal-footer">
-												<div class="form-group" >
-													<button type="button" class="btn btn-success">Είσοδος</button>
-													<button type="button" class="btn btn-danger" data-dismiss="modal">Ακύρωση</button>
-												</div>
-											</div>
-										</div>
-      
-									</div>
-								</div>
+							
+							<li><a href="#" ><span class="glyphicon glyphicon-log-in"></span> Είσοδος</a>
 							</li>
 						</ul>
 									</div>
 							</div>
 					</div>
 			</nav>
-		
+	
 		<div class="row">
 			<div class="col-md-9">
 			<h1> articles </h1>
@@ -227,6 +53,7 @@ header('Content-Type: text/html; charset=utf8');
 			<hr>
 			</div>
 		</div>
+		
 		<div class="footer" style="background-color:#1a1a1a;color:#cccccc;border-radius: 5px;">
 		<div class="row">
 			<div class="col-md-4">
@@ -271,6 +98,6 @@ header('Content-Type: text/html; charset=utf8');
 		</div>
 			</div>
 		</div>
-	</div>
+
 </body>
-</html
+</html>
