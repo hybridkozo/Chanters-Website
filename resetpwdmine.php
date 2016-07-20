@@ -1,8 +1,18 @@
+<?PHP
+require_once("./include/membersite_config.php");
+
+$success = false;
+if($fgmembersite->ResetPassword())
+{
+    $success=true;
+}
+
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
 <head>
 <meta charset="utf-8">
-<title>Σύλογος Ιεροψαλτών</title>
+<title>Ξ£ΟΞ»ΞΏΞ³ΞΏΟ‚ Ξ™ΞµΟΞΏΟΞ±Ξ»Ο„ΟΞ½</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -13,10 +23,10 @@
 		<div class="page-header">
 		
 			<h1>
-				<img src="media/images/logo.gif" class="img-rounded" alt="Σύλογος Ιεροψαλτών" width="100" height="120">
-				Σύλογος Ιεροψαλτών Αθηνών
+				<img src="media/images/logo.gif" class="img-rounded" alt="Ξ£ΟΞ»ΞΏΞ³ΞΏΟ‚ Ξ™ΞµΟΞΏΟΞ±Ξ»Ο„ΟΞ½" width="100" height="120">
+				Ξ£ΟΞ»ΞΏΞ³ΞΏΟ‚ Ξ™ΞµΟΞΏΟΞ±Ξ»Ο„ΟΞ½ Ξ‘ΞΈΞ·Ξ½ΟΞ½
 			</h1>
-			<p>Ο Σύλογος Ιεροψαλτών Αθηνών είναι δίπλα σας από το 1924.</p>
+			<p>Ξ Ξ£ΟΞ»ΞΏΞ³ΞΏΟ‚ Ξ™ΞµΟΞΏΟΞ±Ξ»Ο„ΟΞ½ Ξ‘ΞΈΞ·Ξ½ΟΞ½ ΞµΞ―Ξ½Ξ±ΞΉ Ξ΄Ξ―Ο€Ξ»Ξ± ΟƒΞ±Ο‚ Ξ±Ο€Ο Ο„ΞΏ 1924.</p>
 			<nav class="navbar navbar-inverse">
 				<div class="container-fluid">
 					<div class="navbar-header">
@@ -31,10 +41,10 @@
 				require_once("./include/dynamicmenu.php");
 				?>
 						<ul class="nav navbar-nav navbar-right">
-							<li><a href="register.php" ><span class="glyphicon glyphicon-user"></span> Εγγραφή</a>
+							<li><a href="register.php" ><span class="glyphicon glyphicon-user"></span> Ξ•Ξ³Ξ³ΟΞ±Ο†Ξ®</a>
 							</li>
 							
-							<li><a href="#" ><span class="glyphicon glyphicon-log-in"></span> Είσοδος</a>
+							<li><a href="loginmine.php" ><span class="glyphicon glyphicon-log-in"></span> Ξ•Ξ―ΟƒΞΏΞ΄ΞΏΟ‚</a>
 							</li>
 						</ul>
 									</div>
@@ -44,9 +54,20 @@
 	
 		<div class="row">
 			<div class="col-md-9">
-			<h1> Ευχαριστούμε για την εγγραφή :) </h1>
+			<?php
+			if($success){
+			?>
+			<h2>Ξ ΞΊΟ‰Ξ΄ΞΉΞΊΟΟ‚ Ξ¬Ξ»Ξ»Ξ±ΞΎΞµ ΞµΟ€ΞΉΟ„Ο…Ο‡ΟΟ‚!</h2>
 			<hr>
-			Ένα email επιβεβαίωσης έχει σταλεί στο λογαριασμό email που δώσατε κατά την εγγραφή σας. Παρακαλώ πολύ ελέγξτε το email σας και πατήστε στο σύνδεσμο για να ολοκληρωθεί η εγγραφή σας.
+			Ξ ΞΊΞ±ΞΉΞ½ΞΏΟΟΞΉΞΏΟ‚ ΞΊΟ‰Ξ΄ΞΉΞΊΟΟ‚ Ξ­Ο‡ΞµΞΉ Ξ±Ο€ΞΏΟƒΟ„Ξ±Ξ»ΞµΞ― ΟƒΟ„ΞΏ Email ΟƒΞ±Ο‚
+			<?php
+			}else{
+			?>
+			<h2>Ξ£Ο†Ξ¬Ξ»ΞΌΞ±!!!</h2>
+			<span class='error'><?php echo $fgmembersite->GetErrorMessage(); ?></span>
+			<?php
+			}
+			?>
 			</div>
 			
 			<div class="col-md-3">
@@ -61,10 +82,10 @@
 			<h3> Site Map </h3>
 			<hr>
 				<ul >
-					<li > Αρχική</li>
-					<li > Ο Σύλογος μας</li> 
-					<li > Τα νέα μας</li> 
-					<li > Επικοινωνία</li> 
+					<li > Ξ‘ΟΟ‡ΞΉΞΊΞ®</li>
+					<li > Ξ Ξ£ΟΞ»ΞΏΞ³ΞΏΟ‚ ΞΌΞ±Ο‚</li> 
+					<li > Ξ¤Ξ± Ξ½Ξ­Ξ± ΞΌΞ±Ο‚</li> 
+					<li > Ξ•Ο€ΞΉΞΊΞΏΞΉΞ½Ο‰Ξ½Ξ―Ξ±</li> 
 				</ul>
 			<hr>	
 			</div>
@@ -80,9 +101,9 @@
 				<hr>
 			</div>
 			<div class="col-md-4">
-			<h3> Επικοινωνία </h3>
+			<h3> Ξ•Ο€ΞΉΞΊΞΏΞΉΞ½Ο‰Ξ½Ξ―Ξ± </h3>
 			<hr>
-				<p><span class="glyphicon glyphicon-home"></span> Πραξιτέλους 236, Πειραιάς, Τ.Κ. 18633</p>
+				<p><span class="glyphicon glyphicon-home"></span> Ξ ΟΞ±ΞΎΞΉΟ„Ξ­Ξ»ΞΏΟ…Ο‚ 236, Ξ ΞµΞΉΟΞ±ΞΉΞ¬Ο‚, Ξ¤.Ξ. 18633</p>
 				<p> <span class="glyphicons glyphicons-iphone"></span>+306971903121</p>
 				<p> <span class="glyphicons glyphicons-email"></span> g.kozompolis@gmail.com</p>
 			<hr>
@@ -92,7 +113,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				
-			<p style="text-align:center;">© 2016 Σύλογος Ιεροψαλτών Αθηνών, designed by John Kozompolis and George Emmanouil</p>
+			<p style="text-align:center;">Β© 2016 Ξ£ΟΞ»ΞΏΞ³ΞΏΟ‚ Ξ™ΞµΟΞΏΟΞ±Ξ»Ο„ΟΞ½ Ξ‘ΞΈΞ·Ξ½ΟΞ½, designed by John Kozompolis and George Emmanouil</p>
 			
 			</div>
 		</div>

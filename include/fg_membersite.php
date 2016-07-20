@@ -122,13 +122,13 @@ class FGMembersite
     {
         if(empty($_POST['username']))
         {
-            $this->HandleError("UserName is empty!");
+            $this->HandleError("Το όνομα χρήστη είναι κενό!");
             return false;
         }
         
         if(empty($_POST['password']))
         {
-            $this->HandleError("Password is empty!");
+            $this->HandleError("Παρακαλώ γράψτε τον κωδικό σας!");
             return false;
         }
         
@@ -184,7 +184,7 @@ class FGMembersite
     {
         if(empty($_POST['email']))
         {
-            $this->HandleError("Email is empty!");
+            $this->HandleError("Email κενό!");
             return false;
         }
         $user_rec = array();
@@ -523,20 +523,21 @@ class FGMembersite
         
         $mailer->AddAddress($email,$user_rec['name']);
         
-        $mailer->Subject = "Your reset password request at ".$this->sitename;
+        $mailer->Subject = "Ο κωδικός επαναφοράς για το ".$this->sitename;
 
         $mailer->From = $this->GetFromAddress();
         
         $link = $this->GetAbsoluteURLFolder().
-                '/resetpwd.php?email='.
+                '/resetpwdmine.php?email='.
                 urlencode($email).'&code='.
                 urlencode($this->GetResetPasswordCode($email));
 
-        $mailer->Body ="Hello ".$user_rec['name']."\r\n\r\n".
-        "There was a request to reset your password at ".$this->sitename."\r\n".
-        "Please click the link below to complete the request: \r\n".$link."\r\n".
-        "Regards,\r\n".
-        "Webmaster\r\n".
+        $mailer->Body ="Γεια σου ".$user_rec['name']."\r\n\r\n".
+        "Είχαμε μία αίτηση για επαναφορά κωδικού ".$this->sitename."\r\n".
+        "Παρακαλώ πάτα στον σύνδεσμο για την ολοκλήρωση της διαδικασίας: \r\n".$link."\r\n".
+        "Με εκτίμηση,\r\n".
+        "O Διαχειριστής\r\n".
+		"Κοζομπόλης Ιωάννης\r\n".
         $this->sitename;
         
         if(!$mailer->Send())
@@ -556,20 +557,21 @@ class FGMembersite
         
         $mailer->AddAddress($email,$user_rec['name']);
         
-        $mailer->Subject = "Your new password for ".$this->sitename;
+        $mailer->Subject = "Ο κωδικός σου για το ".$this->sitename;
 
         $mailer->From = $this->GetFromAddress();
         
-        $mailer->Body ="Hello ".$user_rec['name']."\r\n\r\n".
-        "Your password is reset successfully. ".
-        "Here is your updated login:\r\n".
-        "username:".$user_rec['username']."\r\n".
-        "password:$new_password\r\n".
+        $mailer->Body ="Γειά σου ".$user_rec['name']."\r\n\r\n".
+        "Ο κωδικός σου άλλαξε. ".
+        "Εδώ είναι τα στοιχεία για την είσοδο σου:\r\n".
+        "Όνομα χρήστη:".$user_rec['username']."\r\n".
+        "Κωδικός:$new_password\r\n".
         "\r\n".
-        "Login here: ".$this->GetAbsoluteURLFolder()."/login.php\r\n".
+        "Κάντε είσοδο εδώ: ".$this->GetAbsoluteURLFolder()."/loginmine.php\r\n".
         "\r\n".
-        "Regards,\r\n".
-        "Webmaster\r\n".
+        "Με εκτίμηση,\r\n".
+        "Ο διαχειριστής\r\n".
+		"Κοζομπόλης Ιωάννης\r\n".
         $this->sitename;
         
         if(!$mailer->Send())

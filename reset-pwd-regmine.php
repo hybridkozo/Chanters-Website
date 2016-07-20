@@ -1,11 +1,13 @@
 <?PHP
 require_once("./include/membersite_config.php");
 
-if(isset($_GET['code']))
+$emailsent = false;
+if(isset($_POST['submitted']))
 {
-   if($fgmembersite->ConfirmUser())
+   if($fgmembersite->EmailResetPasswordLink())
    {
-        $fgmembersite->RedirectToURL("loginmine.php");
+        $fgmembersite->RedirectToURL("reset-pwd-linkmine.php");
+        exit;
    }
 }
 
@@ -19,9 +21,6 @@ if(isset($_GET['code']))
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  
-  <script type='text/javascript' src='scripts/gen_validatorv31.js'></script>
-  <script src="scripts/pwdwidget.js" type="text/javascript"></script> 
 </head>
 <body>
     <div class="container">
@@ -41,14 +40,12 @@ if(isset($_GET['code']))
 						<span class="icon-bar"></span>
 						</button>			
 					</div>
-					<div class="collapse navbar-collapse"  id="myNavbar">
-									
+					<div class="collapse navbar-collapse"  id="myNavbar">				
 				<?php
 				require_once("./include/dynamicmenu.php");
-			?>
-						
+				?>
 						<ul class="nav navbar-nav navbar-right">
-							<li><a href="register.php" ><span class="glyphicon glyphicon-user"></span> Εγγραφή</a>								
+							<li><a href="register.php" ><span class="glyphicon glyphicon-user"></span> Εγγραφή</a>
 							</li>
 							
 							<li><a href="loginmine.php" ><span class="glyphicon glyphicon-log-in"></span> Είσοδος</a>
@@ -58,45 +55,51 @@ if(isset($_GET['code']))
 							</div>
 					</div>
 			</nav>
-		<div id="articles" class="row">
+	
+		<div class="row">
 			<div class="col-md-9">
-			<h2>Επιβεβαίωση εγγραφής</h2>
-<p>
-Παρακαλώ γράψτε τον κωδικό εγγραφής παρακάτω.
-</p>
+			<h1> Επαναφορά κωδικού </h1>
 			<hr>
-				<form id='confirm' class="form-horizontal" role="form" action='<?php echo $fgmembersite->GetSelfScript(); ?>' method='get' accept-charset='UTF-8'>
-					<div class="form-group">
+			<form id='resetreg' class="form-horizontal" role="form" action='<?php echo $fgmembersite->GetSelfScript(); ?>' method='post' accept-charset='UTF-8'>
+					<input type='hidden' name='submitted' id='submitted' value='1'/>
+				<div class="form-group">
 					<div class="control-label col-md-12">* Απαιτούμενα πεδία</div>
-					
 				</div>
 				<div class="form-group">
-				<div class="control-label col-md-9"><span class='error' style="color:red;"><?php echo $fgmembersite->GetErrorMessage(); ?></span></div>
+					<div class="control-label col-md-12"><span class='error'><?php echo $fgmembersite->GetErrorMessage(); ?></span></div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-md-3" for='code' >Κωδικός επιβεβαίωσης*: </label>
+					<label for='username' class="control-label col-md-3">Email*:</label>
 					<div class="col-md-9">
-					<input type='text'class="form-control" name='code' id='code'  maxlength="50" /><br/>
-					<span id='register_code_errorloc' class='error'></span>
-					</div>
+						<input type='text' name='email' id='email' class="form-control" value='<?php echo $fgmembersite->SafeDisplay('email') ?>' maxlength="50" /><br/>
+						<span id='resetreq_email_errorloc' class='error'></span>
+					</div>	
 				</div>
-				<div class='container, form-group'>
+				<div class="form-group">
 					<div class="col-md-12">
-					<input type='submit'class="btn btn-success btn-block"  name='Submit' value='Επιβεβαίωση' />
-					</div>
+						Ένας σύνδεσμος θα αποσταλεί στο Email σας για να επαναφέρετε τον λογαριασμό σας με καινούριο κωδικό.
+					</div>			
+				</div>
+				<div class="form-group">
+					<div class="col-md-12">
+						<input type='submit' name='Submit' value='Αποστολή κωδικού' class="btn btn-success btn-block" />
+					</div>			
 				</div>
 			</form>
-				<script type='text/javascript'>
-					// <![CDATA[
+			<!-- client-side Form Validations:
+			Uses the excellent form validation script from JavaScript-coder.com-->
+			<script type='text/javascript'>
+				// <![CDATA[
 
-					var frmvalidator  = new Validator("confirm");
-					frmvalidator.EnableOnPageErrorDisplay();
-					frmvalidator.EnableMsgsTogether();
-					frmvalidator.addValidation("code","req","Παρακαλώ γράψτε τον κωδικό επιβεβαίωσης");
+				var frmvalidator  = new Validator("resetreq");
+				frmvalidator.EnableOnPageErrorDisplay();
+				frmvalidator.EnableMsgsTogether();
 
-					// ]]>
-				</script>
-			<hr>
+				frmvalidator.addValidation("email","req","Παρακαλώ γράψτε το email που κάνατε εγγραφή");
+				frmvalidator.addValidation("email","email","Παρακαλώ γράψτε το email που κάνατε εγγραφή");
+
+				// ]]>
+			</script>
 			</div>
 			
 			<div class="col-md-3">
@@ -104,6 +107,7 @@ if(isset($_GET['code']))
 			<hr>
 			</div>
 		</div>
+		
 		<div class="footer" style="background-color:#1a1a1a;color:#cccccc;border-radius: 5px;">
 		<div class="row">
 			<div class="col-md-4">
@@ -148,21 +152,6 @@ if(isset($_GET['code']))
 		</div>
 			</div>
 		</div>
-<script type='text/javascript'>
-// <![CDATA[
-    var pwdwidget = new PasswordWidget('thepwddiv','password');
-    pwdwidget.MakePWDWidget();
-    
-    var frmvalidator  = new Validator("register");
-    frmvalidator.EnableOnPageErrorDisplay();
-    frmvalidator.EnableMsgsTogether();
-    frmvalidator.addValidation("name","req","Παρακαλώ δώστε ένα όνομα");
-    frmvalidator.addValidation("email","req","Παρακαλώ δώστε ένα Email");
-    frmvalidator.addValidation("email","email","Παρακαλώ δώστε την σωστή διεύθυνση Email");
-    frmvalidator.addValidation("username","req","Παρακαλώ δώστε ένα όνομα χρήστη");
-    frmvalidator.addValidation("password","req","Παρακαλώ δώστε ένα κωδικό");
-// ]]>
-</script>
 
 </body>
 </html>

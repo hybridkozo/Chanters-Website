@@ -40,7 +40,7 @@
 							<li><a href="register.php" ><span class="glyphicon glyphicon-user"></span> Εγγραφή</a>								
 							</li>
 							
-							<li><a href="#" ><span class="glyphicon glyphicon-log-in"></span> Είσοδος</a>
+							<li><a href="loginmine.php" ><span class="glyphicon glyphicon-log-in"></span> Είσοδος</a>
 							</li>
 						</ul>
 									</div>

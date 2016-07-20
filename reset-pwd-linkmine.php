@@ -1,15 +1,3 @@
-<?PHP
-require_once("./include/membersite_config.php");
-
-if(isset($_GET['code']))
-{
-   if($fgmembersite->ConfirmUser())
-   {
-        $fgmembersite->RedirectToURL("loginmine.php");
-   }
-}
-
-?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
 <head>
@@ -19,9 +7,6 @@ if(isset($_GET['code']))
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  
-  <script type='text/javascript' src='scripts/gen_validatorv31.js'></script>
-  <script src="scripts/pwdwidget.js" type="text/javascript"></script> 
 </head>
 <body>
     <div class="container">
@@ -41,14 +26,12 @@ if(isset($_GET['code']))
 						<span class="icon-bar"></span>
 						</button>			
 					</div>
-					<div class="collapse navbar-collapse"  id="myNavbar">
-									
+					<div class="collapse navbar-collapse"  id="myNavbar">				
 				<?php
 				require_once("./include/dynamicmenu.php");
-			?>
-						
+				?>
 						<ul class="nav navbar-nav navbar-right">
-							<li><a href="register.php" ><span class="glyphicon glyphicon-user"></span> Εγγραφή</a>								
+							<li><a href="register.php" ><span class="glyphicon glyphicon-user"></span> Εγγραφή</a>
 							</li>
 							
 							<li><a href="loginmine.php" ><span class="glyphicon glyphicon-log-in"></span> Είσοδος</a>
@@ -58,45 +41,12 @@ if(isset($_GET['code']))
 							</div>
 					</div>
 			</nav>
-		<div id="articles" class="row">
+	
+		<div class="row">
 			<div class="col-md-9">
-			<h2>Επιβεβαίωση εγγραφής</h2>
-<p>
-Παρακαλώ γράψτε τον κωδικό εγγραφής παρακάτω.
-</p>
+			<h1> Επιβεβαίωση </h1>
 			<hr>
-				<form id='confirm' class="form-horizontal" role="form" action='<?php echo $fgmembersite->GetSelfScript(); ?>' method='get' accept-charset='UTF-8'>
-					<div class="form-group">
-					<div class="control-label col-md-12">* Απαιτούμενα πεδία</div>
-					
-				</div>
-				<div class="form-group">
-				<div class="control-label col-md-9"><span class='error' style="color:red;"><?php echo $fgmembersite->GetErrorMessage(); ?></span></div>
-				</div>
-				<div class="form-group">
-					<label class="control-label col-md-3" for='code' >Κωδικός επιβεβαίωσης*: </label>
-					<div class="col-md-9">
-					<input type='text'class="form-control" name='code' id='code'  maxlength="50" /><br/>
-					<span id='register_code_errorloc' class='error'></span>
-					</div>
-				</div>
-				<div class='container, form-group'>
-					<div class="col-md-12">
-					<input type='submit'class="btn btn-success btn-block"  name='Submit' value='Επιβεβαίωση' />
-					</div>
-				</div>
-			</form>
-				<script type='text/javascript'>
-					// <![CDATA[
-
-					var frmvalidator  = new Validator("confirm");
-					frmvalidator.EnableOnPageErrorDisplay();
-					frmvalidator.EnableMsgsTogether();
-					frmvalidator.addValidation("code","req","Παρακαλώ γράψτε τον κωδικό επιβεβαίωσης");
-
-					// ]]>
-				</script>
-			<hr>
+			Ένα email έχει αποσταλεί με σκοπό να επιβεβαιώσετε την αλλαγή του κωδικού σας. Παρακαλώ ελέξτε το email σας και επιβεβαιώστε πατόντας στο σύνδεσμο που σας έχουμε στείλει.
 			</div>
 			
 			<div class="col-md-3">
@@ -104,6 +54,7 @@ if(isset($_GET['code']))
 			<hr>
 			</div>
 		</div>
+		
 		<div class="footer" style="background-color:#1a1a1a;color:#cccccc;border-radius: 5px;">
 		<div class="row">
 			<div class="col-md-4">
@@ -148,21 +99,6 @@ if(isset($_GET['code']))
 		</div>
 			</div>
 		</div>
-<script type='text/javascript'>
-// <![CDATA[
-    var pwdwidget = new PasswordWidget('thepwddiv','password');
-    pwdwidget.MakePWDWidget();
-    
-    var frmvalidator  = new Validator("register");
-    frmvalidator.EnableOnPageErrorDisplay();
-    frmvalidator.EnableMsgsTogether();
-    frmvalidator.addValidation("name","req","Παρακαλώ δώστε ένα όνομα");
-    frmvalidator.addValidation("email","req","Παρακαλώ δώστε ένα Email");
-    frmvalidator.addValidation("email","email","Παρακαλώ δώστε την σωστή διεύθυνση Email");
-    frmvalidator.addValidation("username","req","Παρακαλώ δώστε ένα όνομα χρήστη");
-    frmvalidator.addValidation("password","req","Παρακαλώ δώστε ένα κωδικό");
-// ]]>
-</script>
 
 </body>
 </html>

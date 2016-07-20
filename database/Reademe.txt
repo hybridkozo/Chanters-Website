@@ -1,0 +1,7 @@
+/*hostname*/'localhost',
+/*username*/'john',
+/*password*/'giannis',
+/*database name*/'chanters',
+               
+
+make a user "john" with password "giannis" import this database to a database with name "chanters" and with nothing all you are ready!!!
