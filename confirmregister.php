@@ -1,4 +1,15 @@
+<?PHP
+require_once("./include/membersite_config.php");
 
+if(isset($_GET['code']))
+{
+   if($fgmembersite->ConfirmUser())
+   {
+        $fgmembersite->RedirectToURL("thank-you-regd.html");
+   }
+}
+
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
 <head>
@@ -47,31 +58,15 @@
 							</div>
 					</div>
 			</nav>
-			
-			<?PHP
-require_once("./include/membersite_config.php");
-
-if(isset($_POST['submitted']))
-{
-   if($fgmembersite->RegisterUser())
-   {
-	   
-        $fgmembersite->RedirectToURL("thanks.php");
-      
-   }
-}
-
-?>
-		
 		<div id="articles" class="row">
 			<div class="col-md-9">
-			<h1> Εγγραφή </h1>
+			<h2>Επιβεβαίωση εγγραφής</h2>
+<p>
+Παρακαλώ γράψτε τον κωδικό εγγραφής παρακάτω.
+</p>
 			<hr>
-				<form id='register' class="form-horizontal" role="form" action='<?php echo $fgmembersite->GetSelfScript(); ?>' method='post' accept-charset='UTF-8'>
-				
-					<input type='hidden' name='submitted' id='submitted' value='1'/>
+				<form id='confirm' class="form-horizontal" role="form" action='<?php echo $fgmembersite->GetSelfScript(); ?>' method='get' accept-charset='UTF-8'>
 					<div class="form-group">
-					<input type='hidden'  class='spmhidip' name='<?php echo $fgmembersite->GetSpamTrapInputName(); ?>' />
 					<div class="control-label col-md-12">* Απαιτούμενα πεδία</div>
 					
 				</div>
@@ -79,43 +74,28 @@ if(isset($_POST['submitted']))
 				<div class="control-label col-md-9"><span class='error' style="color:red;"><?php echo $fgmembersite->GetErrorMessage(); ?></span></div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-md-3" for='name' >Όνομα/Επώνυμο*: </label>
+					<label class="control-label col-md-3" for='code' >Κωδικός επιβεβαίωσης*: </label>
 					<div class="col-md-9">
-					<input type='text'class="form-control" name='name' id='name' value='<?php echo $fgmembersite->SafeDisplay('name') ?>' maxlength="50" /><br/>
-					<span id='register_name_errorloc' class='error' style="color:red;"></span>
+					<input type='text'class="form-control" name='code' id='code'  maxlength="50" /><br/>
+					<span id='register_code_errorloc' class='error'></span>
 					</div>
 				</div>
 				<div class='container, form-group'>
-					<label class="control-label col-md-3" for='email' >Διεύθυνση Email*:</label>
-					<div class="col-md-9">
-					<input type='text' class="form-control" name='email' id='email' value='<?php echo $fgmembersite->SafeDisplay('email') ?>' maxlength="50" /><br/>
-					<span id='register_email_errorloc' class='error'style="color:red;" ></span>
-					</div>
-				</div>
-				<div class='form-group'>
-					<label class="control-label col-md-3" for='username' >Όνομα Χρήστη*:</label>
-					<div class="col-md-9">
-					<input type='text' class="form-control" name='username' id='username' value='<?php echo $fgmembersite->SafeDisplay('username') ?>' maxlength="50" /><br/>
-					<span id='register_username_errorloc' class='error' style="color:red;" ></span>
-					</div>
-				</div>
-				<div class='form-group' style='height:80px;'>
-					<label class="control-label col-md-3" for='password' >Κωδικός*:</label>
-					<div class="col-md-9">
-					<div class='pwdwidgetdiv' id='thepwddiv' ></div>
-					<noscript>
-					<input type='password' class="form-control" name='password' id='password' maxlength="50" />
-					</noscript>    
-					<div id='register_password_errorloc' class='error' style='clear:both;color:red;'></div>
-					</div>
-				</div>
-
-				<div class='form-group'>
 					<div class="col-md-12">
-					<input type='submit'  name='Submit' class="btn btn-success btn-block" value='Εγγραφή' />
+					<input type='submit'class="btn btn-success btn-block"  name='Submit' value='Επιβεβαίωση' />
 					</div>
 				</div>
 			</form>
+				<script type='text/javascript'>
+					// <![CDATA[
+
+					var frmvalidator  = new Validator("confirm");
+					frmvalidator.EnableOnPageErrorDisplay();
+					frmvalidator.EnableMsgsTogether();
+					frmvalidator.addValidation("code","req","Παρακαλώ γράψτε τον κωδικό επιβεβαίωσης");
+
+					// ]]>
+				</script>
 			<hr>
 			</div>
 			

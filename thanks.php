@@ -34,7 +34,7 @@
 							<li><a href="register.php" ><span class="glyphicon glyphicon-user"></span> Εγγραφή</a>
 							</li>
 							
-							<li><a href="loginmine.php" ><span class="glyphicon glyphicon-log-in"></span> Είσοδος</a>
+							<li><a href="#" ><span class="glyphicon glyphicon-log-in"></span> Είσοδος</a>
 							</li>
 						</ul>
 									</div>
@@ -44,8 +44,12 @@
 	
 		<div class="row">
 			<div class="col-md-9">
-			<h1> articles </h1>
+			<h1> Ευχαριστούμε για την εγγραφή :) </h1>
 			<hr>
+			<p> Ένα email επιβεβαίωσης έχει σταλεί στο λογαριασμό email που δώσατε κατά την εγγραφή σας. 
+			Παρακαλώ πολύ ελέγξτε το email σας και πατήστε στο σύνδεσμο για να ολοκληρωθεί η εγγραφή σας.
+			</p>
+			</br>
 			</div>
 			
 			<div class="col-md-3">

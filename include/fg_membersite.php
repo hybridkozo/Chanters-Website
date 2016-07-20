@@ -102,7 +102,7 @@ class FGMembersite
     {
         if(empty($_GET['code'])||strlen($_GET['code'])<=10)
         {
-            $this->HandleError("Please provide the confirm code");
+            $this->HandleError("Παρακαλώ γράψε τον σωστό κωδικό επιβεβαίωσης");
             return false;
         }
         $user_rec = array();
@@ -465,16 +465,17 @@ class FGMembersite
 
         $mailer->From = $this->GetFromAddress();        
         
-        $mailer->Body ="Hello ".$user_rec['name']."\r\n\r\n".
-        "Welcome! Your registration  with ".$this->sitename." is completed.\r\n".
+        $mailer->Body ="Γειά σου ".$user_rec['name']."\r\n\r\n".
+        "Καλώς ήρθες στο ".$this->sitename." η εγγραφή σου ολοκληρώθηκε.\r\n".
         "\r\n".
-        "Regards,\r\n".
-        "Webmaster\r\n".
+        "Με εκτίμηση,\r\n".
+        "Ο Διαχειριστής\r\n".
+		"Κοζομπόλης Ιωάννης\r\n".
         $this->sitename;
 
         if(!$mailer->Send())
         {
-            $this->HandleError("Failed sending user welcome email.");
+            $this->HandleError("Αποτυχία αποστολής Email");
             return false;
         }
         return true;
@@ -626,26 +627,27 @@ class FGMembersite
         
         $mailer->AddAddress($formvars['email'],$formvars['name']);
         
-        $mailer->Subject = "Your registration with ".$this->sitename;
+        $mailer->Subject = "Η εγγραφή σας στο ".$this->sitename;
 
         $mailer->From = $this->GetFromAddress();        
         
         $confirmcode = $formvars['confirmcode'];
         
-        $confirm_url = $this->GetAbsoluteURLFolder().'/confirmreg.php?code='.$confirmcode;
+        $confirm_url = $this->GetAbsoluteURLFolder().'/confirmregister.php?code='.$confirmcode;
         
-        $mailer->Body ="Hello ".$formvars['name']."\r\n\r\n".
-        "Thanks for your registration with ".$this->sitename."\r\n".
-        "Please click the link below to confirm your registration.\r\n".
+        $mailer->Body ="Γεια σου ".$formvars['name']."\r\n\r\n".
+        "Ευχαριστούμε για την εγγραφή σου στο ".$this->sitename."\r\n".
+        "Παρακαλώ πάτα στον σύνδεσμο απο κάτω για να επιβεβαιώσεις την εγγραφή σου.\r\n".
         "$confirm_url\r\n".
         "\r\n".
-        "Regards,\r\n".
-        "Webmaster\r\n".
+        "Με εκτίμηση,\r\n".
+        "Ο διαχειριστής\r\n".
+		"Κοζομπόλης Ιωάννης\r\n".
         $this->sitename;
 
         if(!$mailer->Send())
         {
-            $this->HandleError("Failed sending registration confirmation email.");
+            $this->HandleError("Αποτυχία αποστολής email επιβεβαίωσης εγγραφής");
             return false;
         }
         return true;
