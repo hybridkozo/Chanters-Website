@@ -6,7 +6,7 @@ if(isset($_POST['submitted']))
    if($administration->validateForm())
    {
 	   if($administration->CheckUser()){
-	   $administration->RedirectToURL("https://www.google.gr");
+	   $administration->RedirectToURL("centralmenu.php");
 	   }
    }
 }
@@ -83,7 +83,7 @@ if(isset($_POST['submitted']))
 				</div>
 				
 				<h1>Administrator Page</h1>
-				<p>© 2016 Σύλογος Ιεροψαλτών Αθηνών, designed by John Kozompolis and George Emmanouil</p>
+				<p>© 2016 Σύλογος Ιεροψαλτών Αθηνών, designed by <a href="https://www.linkedin.com/in/ioannis-kozompolis-373406125">John Kozompolis</a> and George Emmanouil</p>
 				
 			</form>
 		</div>
