@@ -34,9 +34,9 @@
 				while($row = mysql_fetch_array($retval, MYSQL_ASSOC)){
 						echo '<tr><td>' . $row['id_user'] . '</td><td>' . $row['name'] . '</td><td>' . $row['email'] . '</td><td>' . $row['username'] . '</td><td>' . $row['admin'];
 						if ($row['admin']==1){
-							echo '</td><td><a data-toggle="tooltip" name="'. $row['id_user'] .'" title="Delete administrator privileges" href="#"><span class="glyphicon glyphicon-minus-sign"></span></a>' . " " . '<a href="#" data-toggle="tooltip" title="Delete this user"><span class="glyphicon glyphicon-remove"></span></a>';
+							echo '</td><td><a data-toggle="tooltip" title="Delete administrator privileges" href="?id=' . $row['id_user'] . '"><span class="glyphicon glyphicon-minus-sign"></span></a>' . " " . '<a href="?id_del=' . $row['id_user'] . '" data-toggle="tooltip" title="Delete this user"><span class="glyphicon glyphicon-remove"></span></a>';
 						}else {
-							echo '</td><td><a name="'. $row['id_user'] .'" data-toggle="tooltip" title="Give administrator privileges" href="#"><span class="glyphicon glyphicon-ok-circle"></span></a>' . " " . '<a href="#" data-toggle="tooltip" title="Delete this user"><span class="glyphicon glyphicon-remove"></span></a>';
+							echo '</td><td><a data-toggle="tooltip" title="Give administrator privileges" href="?id=' . $row['id_user'] . '"><span class="glyphicon glyphicon-ok-circle"></span></a>' . " " . '<a href="?id_del=' . $row['id_user'] . '" data-toggle="tooltip" title="Delete this user"><span class="glyphicon glyphicon-remove"></span></a>';
 						}
 						
 						echo '</td></tr>';

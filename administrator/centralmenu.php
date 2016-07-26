@@ -1,11 +1,31 @@
+
 <?PHP
 require_once("./include/adminfunctions.php");
 $administration=new administration();
+$administration->InitDB(/*hostname*/'localhost',
+                      /*username*/'john',
+                      /*password*/'giannis',
+                      /*database name*/'chanters');
 if(!$administration->CheckLogin())
 {
     $administration->RedirectToURL("index.php");
     exit;
 }
+if (isset($_GET['id']))
+    {
+        $administration->ChangePrivileges($_GET['id']);
+		$_GET['id']=null;
+		$administration->RedirectToURL("centralmenu.php");
+		
+    }
+	if (isset($_GET['id_del']))
+    {
+        $administration->DeleteUser($_GET['id_del']);
+		$_GET['id_del']=null;
+		$administration->RedirectToURL("centralmenu.php");
+		
+    }
+
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">

@@ -140,6 +140,47 @@
 			unset($_SESSION[$sessionvar]);
 		}
 		
+		function ChangePrivileges($id){
+			$conn = mysqli_connect($this->server, $this->user, $this->pass,$this->database);
+			// Check connection
+			if (!$conn) {
+			die("Connection failed: " . mysqli_connect_error());
+			}
+			
+			$sql = "select admin from users where id_user=$id";
+			$result = mysqli_query($conn, $sql);
+			if (mysqli_num_rows($result) > 0) {
+			// output data of each row
+			while($row = mysqli_fetch_assoc($result)) {
+				if ($row['admin']==0){
+					$sql2="UPDATE users SET admin=1 WHERE id_user=$id";
+					$result2 = mysqli_query($conn, $sql2);
+				}else{
+					$sql2="UPDATE users SET admin=0 WHERE id_user=$id"; 
+					$result2 = mysqli_query($conn, $sql2);
+				}
+			}
+			
+			}
+			mysqli_close($conn);
+			
+			
+		}
+		function DeleteUser($id){
+			$conn = mysqli_connect($this->server, $this->user, $this->pass,$this->database);
+			// Check connection
+			if (!$conn) {
+			die("Connection failed: " . mysqli_connect_error());
+			}
+			
+			$sql = "DELETE FROM users WHERE id_user=$id";
+			$result = mysqli_query($conn, $sql);
+			
+			mysqli_close($conn);
+			
+			
+		}
+		
 		
 	}
 
