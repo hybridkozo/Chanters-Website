@@ -13,9 +13,9 @@ $fgmembersite->SetAdminEmail('g.kozompolis@gmail.com');
 //hostname, user name, password, database name and table name
 //note that the script will create the table (for example, fgusers in this case)
 //by itself on submitting register.php for the first time
-$fgmembersite->InitDB(/*hostname*/'localhost',
-                      /*username*/'john',
-                      /*password*/'giannis',
+$fgmembersite->InitDB(/*hostname*/'unipichanters.czbrbzfqqipe.eu-central-1.rds.amazonaws.com',
+                      /*username*/'unipiAdmin0',
+                      /*password*/'unipialepis8never',
                       /*database name*/'chanters',
                       /*table name*/'users');
 

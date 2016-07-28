@@ -166,6 +166,32 @@
 			
 			
 		}
+		function SaveArticle($title,$category,$imageurl,$body){
+			$temp;
+			$conn = mysqli_connect($this->server, $this->user, $this->pass,$this->database);
+			
+			// Check connection
+			if (!$conn) {
+			die("Connection failed: " . mysqli_connect_error());
+			}
+			$sql2="select * from category where name='$category'";
+			$result = mysqli_query($conn, $sql2);
+			$row = mysqli_fetch_assoc($result);
+				$temp=$row['id_category'];
+			
+			
+			$sql="INSERT INTO articles (title, id_category, imageurl, body) VALUES ('$title', '$temp', '$imageurl', '$body')";
+			
+			if (mysqli_query($conn, $sql)) {
+				echo "New record created successfully";
+			} else {
+				echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+			}
+
+			mysqli_close($conn);
+			
+			
+		}
 		function DeleteUser($id){
 			$conn = mysqli_connect($this->server, $this->user, $this->pass,$this->database);
 			// Check connection

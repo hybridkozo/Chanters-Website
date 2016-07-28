@@ -1,8 +1,8 @@
 <?php
 				
-				$dbhost = 'localhost:3306';
-				$dbuser = 'john';
-				$dbpass = 'giannis';
+				$dbhost = 'unipichanters.czbrbzfqqipe.eu-central-1.rds.amazonaws.com:3306';
+				$dbuser = 'unipiAdmin0';
+				$dbpass = 'unipialepis8never';
 				$conn = mysql_connect($dbhost, $dbuser, $dbpass);
 				if(!$conn){
 					die('could not connect: ' . mysql_error());

@@ -17,11 +17,14 @@ if(!$administration->CheckLogin())
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+  <script>tinymce.init({ selector:'textarea' });</script>
 </head>
 <body>
 	<div class="container">
 	<div class="page-header" style="background-color:#1a1a1a;color:#cccccc;border-radius: 5px;">
 		<h1 style="text-align:center;"> Chanters-Website</h1>
+		<h3 style="text-align:right;margin-right:10px;"> Administrator Page</h3>
 		<p style="text-align:right;margin-right:10px;">Διαχειριστής, <?= $administration->printusername(); echo " "; ?><a href="logout.php" ><span class="glyphicon glyphicon-log-out"></span> Αποσύνδεση</a></p>
 	</div>
 			
@@ -40,6 +43,42 @@ if(!$administration->CheckLogin())
 			<div class="col-md-9">
 			<h4> Main Page </h4>
 			<hr>
+			<h3> New Article: </h3>
+				<form class="form-horizontal" role="form" method="POST" enctype="multipart/form-data" action="include/postarticle.php">
+					<div class="form-group">
+						<label class="control-label col-md-2" for="email">Article Title:</label>
+						<div class="col-md-10">
+							<input type="text" class="form-control" id="title" name="title" placeholder="Insert Title">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-md-2" for="pwd">Category:</label>
+							<div class="col-md-10"> 
+							<select class="form-control" id="category" name="category">
+								<option>news</option>
+							</select>
+						</div>
+					</div>	
+					<div class="form-group">
+						    <label class="control-label col-md-2" for="pwd">Article Image:</label>
+							<div class="col-md-10"> 
+								<input type="file" name="fileToUpload" id="fileToUpload" class="form-control">
+						</div>
+					</div>
+						<div class="form-group">
+						<label class="control-label col-md-2" for="email">Article Body:</label>
+						<div class="col-md-10">
+							<textarea class="form-control" name="body" id="body"></textarea>
+						</div>
+					</div>
+					<div class="form-group"> 
+						<div class="col-md-offset-2 col-md-10">
+							<button type="submit" class="btn btn-success btn-block">Submit</button>
+						</div>
+					</div>
+				</form>
+				<h3> Edit Articles: </h3>
+			
 			</div>
 		</div>
 		
