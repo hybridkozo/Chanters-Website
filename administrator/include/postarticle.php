@@ -3,6 +3,7 @@ require_once('validation.php');
 $target_dir = $_SERVER['DOCUMENT_ROOT'] . '/Chanters-Website/media/articlesimages/';
 $path='/Chanters-Website/media/articlesimages/' . basename($_FILES["fileToUpload"]["name"]);
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+$imagepath='media/articlesimages/' . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
 $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 // Check if image file is a actual image or fake image
@@ -39,7 +40,11 @@ if ($uploadOk == 0) {
 } else {
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
 		
-		$administration->SaveArticle($_POST['title'],$_POST['category'],$target_file,$_POST['body']);
+		$date = new DateTime("now", new DateTimeZone('Europe/Athens') );
+		$datetime=$date->format('D-M-Y H:i:s');
+		session_start();
+		$author=$_SESSION['user'];
+		$administration->SaveArticle($_POST['title'],$datetime,$author,$_POST['category'],$imagepath,$_POST['body']);
 		
 		
         echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";

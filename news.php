@@ -23,7 +23,7 @@ if(!$fgmembersite->CheckLogin())
 		<div class="page-header">
 		
 			<h1>
-				<img src="media/images/logo.png" class="img-rounded" alt="Σύλογος Ιεροψαλτών" width="100" height="120">
+				<img src="media/images/logo.png" class="img-rounded" alt="Σύλογος Ιεροψαλτών" width="150" height="150">
 				Σύλογος Ιεροψαλτών Αθηνών
 			</h1>
 			<p>Ο Σύλογος Ιεροψαλτών Αθηνών είναι δίπλα σας από το 1924.</p>
@@ -52,9 +52,14 @@ if(!$fgmembersite->CheckLogin())
 	
 		<div class="row">
 			<div class="col-md-9">
-			<h1> articles </h1>
-			<hr>
+			<?php
+require_once("administrator/include/validation.php");
+
+$administration->PresentArticles('news');
+?>
 			</div>
+					
+
 			
 			<div class="col-md-3">
 			<h1> Gagets </h1>

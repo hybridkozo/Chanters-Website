@@ -1,8 +1,8 @@
 <?php
 				
-				$dbhost = 'localhost:3306';
-				$dbuser = 'john';
-				$dbpass = 'giannis';
+				$dbhost = 'unipichanters.czbrbzfqqipe.eu-central-1.rds.amazonaws.com:3306';
+				$dbuser = 'unipiAdmin0';
+				$dbpass = 'unipialepis8never';
 				$conn = mysql_connect($dbhost, $dbuser, $dbpass);
 				if(!$conn){
 					die('could not connect: ' . mysql_error());
@@ -44,7 +44,7 @@
 						}
 						echo '<ul class="dropdown-menu">';
 						while($row2 = mysql_fetch_array($retval2, MYSQL_ASSOC)){
-							echo '<li><a href="' . $row['link'] . '#">' . $row2['name'] . '</a></li>';
+							echo '<li><a href="' . $row2['link'] . '#">' . $row2['name'] . '</a></li>';
 						}
 						echo "</ul>";
 						echo "</li>";

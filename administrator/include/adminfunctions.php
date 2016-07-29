@@ -8,6 +8,7 @@
 		var $noUserError;
 		var $sqlusername;
 		var $sqlpassword;
+		
 	
 		
 		//database configuration
@@ -166,8 +167,9 @@
 			
 			
 		}
-		function SaveArticle($title,$category,$imageurl,$body){
+		function SaveArticle($title,$datetime,$author,$category,$imageurl,$body){
 			$temp;
+			
 			$conn = mysqli_connect($this->server, $this->user, $this->pass,$this->database);
 			
 			// Check connection
@@ -180,7 +182,7 @@
 				$temp=$row['id_category'];
 			
 			
-			$sql="INSERT INTO articles (title, id_category, imageurl, body) VALUES ('$title', '$temp', '$imageurl', '$body')";
+			$sql="INSERT INTO articles (title, date, author, id_category, imageurl, body) VALUES ('$title', '$datetime', '$author', '$temp', '$imageurl', '$body')";
 			
 			if (mysqli_query($conn, $sql)) {
 				echo "New record created successfully";
@@ -204,6 +206,37 @@
 			
 			mysqli_close($conn);
 			
+			
+		}
+		
+		function PresentArticles($category){
+			$conn = mysqli_connect($this->server, $this->user, $this->pass,$this->database);
+			if (!$conn) {
+			die("Connection failed: " . mysqli_connect_error());
+			}
+			$sql = "SELECT * from articles where id_category='1'";
+			$result = mysqli_query($conn, $sql);
+			
+			if (mysqli_num_rows($result) > 0) {
+			// output data of each row
+			while($row = mysqli_fetch_assoc($result)) {
+				
+				echo '<table><tr><td><img src="' . $row['imageurl'] . '" style="margin:10px;" class="img-thumbnail" alt="Cinque Terre" width="200" height="150">
+						</td>
+						<td >
+						<div style="margin:20px;">' . $row['date'] . '<span style="background-color:red;color:white;font-weight: bold;font-style: italic;"> NEW </span>
+					    <h3>' . $row['title'] . '</h3>
+						' . substr($row['body'], 0,100) . '<a href="#">...Περισότερα</a>
+						</div>
+					</td></tr></table>
+					<hr>';
+				
+			}
+			}else{
+				echo "Κανένα άρθρο σε αυτή την κατηγορία";
+			}
+			
+			mysqli_close($conn);
 			
 		}
 		

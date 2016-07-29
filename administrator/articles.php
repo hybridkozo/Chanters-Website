@@ -56,6 +56,7 @@ if(!$administration->CheckLogin())
 							<div class="col-md-10"> 
 							<select class="form-control" id="category" name="category">
 								<option>news</option>
+								<option>old</option>
 							</select>
 						</div>
 					</div>	

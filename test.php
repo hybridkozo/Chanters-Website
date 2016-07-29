@@ -1,7 +1,5 @@
 <?php
-
-echo "It is work " . $_POST['submitted'];
-
-
+$date = new DateTime("now", new DateTimeZone('Europe/Athens') );
+echo $date->format('D-M-Y H:i:s');
 
 ?>

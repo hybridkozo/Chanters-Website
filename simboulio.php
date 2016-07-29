@@ -1,13 +1,3 @@
-<?PHP
-require_once("./include/membersite_config.php");
-
-if(!$fgmembersite->CheckLogin())
-{
-    $fgmembersite->RedirectToURL("loginmine.php");
-    exit;
-}
-
-?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
 <head>
@@ -41,8 +31,10 @@ if(!$fgmembersite->CheckLogin())
 				require_once("./include/dynamicmenu.php");
 				?>
 						<ul class="nav navbar-nav navbar-right">
+							<li><a href="register.php" ><span class="glyphicon glyphicon-user"></span> Εγγραφή</a>
+							</li>
 							
-							<li><a href="logout.php" >Γεια σου, <?= $fgmembersite->UserFullName(); echo " "; ?><span class="glyphicon glyphicon-log-out"></span> Αποσύνδεση</a>
+							<li><a href="loginmine.php" ><span class="glyphicon glyphicon-log-in"></span> Είσοδος</a>
 							</li>
 						</ul>
 									</div>
@@ -52,7 +44,23 @@ if(!$fgmembersite->CheckLogin())
 	
 		<div class="row">
 			<div class="col-md-9">
-			<h1> articles </h1>
+			<h1> Διετίας 2015-2017 </h1>
+			<hr>
+			<p>Πρόεδρος: Ευστάθιος Γραμμένος</br>
+                       Θεολόγος, Καθηγητής Βυζαντινής Μουσικής, Λαμπαδάριος του Μητροπολιτικού Ι. Ν. Αγίου Νικολάου </p>
+<p>Α΄Αντιπρόεδρος: Βασίλειος Πρασσάς</br>
+                        Συντ/χος Δάσκαλος, Δ/χος Βυζαντινής Μουσικής, Πρωτοψάλτης Ι.Ν. Αγίου Δημητρίου Αλμυρού</p>
+<p>Β΄Αντιπρόεδρος: Γεώργιος Φιλιππίδης</br>
+                        Συμβολαιογράφος, Δ/χος Βυζαντινής Μουσικής, Ιεροψάλτης</p>
+<p>Γεν. Γραμματέας: Ελένη Ντόβα-Χατζή</br>
+                        Συντ/χος Επιχειρηματίας, Π/χος Ανώτερων Θεωρητικών Ευρωπαϊκής Μουσικής, Δ/χος Βυζαντινής Μουσικής</p>
+<p>Ταμίας: Αλκιβιάδης Μιχάλης</br>
+                       Κτηματίας, Καθηγητής Βυζαντινής Μουσικής,  Πρωτοψάλτης Ι.Ν. Αγίου Γεωργίου Αγριάς Βόλου</p>
+<p>Υπεύθ. Δημοσίων Σχέσεων: Γεώργιος Σιώκος</br>
+                        Πολ. Μηχανικός-Τοπογράφος, Δ/χος Βυζαντινής Μουσικής, Πρωτοψάλτης Ι.Ν. Αγίου Νικολάου Πορταριάς Πηλίου</p>
+<p>Ειδ. Γραμματέας – Κοσμήτωρ: Λάμπρος Βλάχος</br>
+                        Συντ/χος Δάσκαλος,  Ιεροψάλτης</p>
+ 
 			<hr>
 			</div>
 			
