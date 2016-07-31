@@ -528,7 +528,7 @@ class FGMembersite
         $mailer->From = $this->GetFromAddress();
         
         $link = $this->GetAbsoluteURLFolder().
-                '/resetpwdmine.php?email='.
+                '/resetpassword.php?email='.
                 urlencode($email).'&code='.
                 urlencode($this->GetResetPasswordCode($email));
 
@@ -635,7 +635,7 @@ class FGMembersite
         
         $confirmcode = $formvars['confirmcode'];
         
-        $confirm_url = $this->GetAbsoluteURLFolder().'/confirmregister.php?code='.$confirmcode;
+        $confirm_url = $this->GetAbsoluteURLFolder().'/index.php?code='.$confirmcode;
         
         $mailer->Body ="Γεια σου ".$formvars['name']."\r\n\r\n".
         "Ευχαριστούμε για την εγγραφή σου στο ".$this->sitename."\r\n".
@@ -864,6 +864,140 @@ class FGMembersite
             $str = stripslashes($str);
         }
         return $str;
-    }    
+    }  
+	function PresentSingleArticle($id){
+			
+			
+			$conn = mysqli_connect($this->db_host, $this->username, $this->pwd,$this->database);
+			if (!$conn) {
+			die("Connection failed: " . mysqli_connect_error());
+			}
+			$sql2="SELECT * from comments where id_article='$id'";
+			$sql = "SELECT * from articles where id_article='$id'";
+			$result = mysqli_query($conn, $sql);
+			$result2=mysqli_query($conn, $sql2);
+			
+			if (mysqli_num_rows($result) > 0) {
+			// output data of each row
+			while($row = mysqli_fetch_assoc($result)) {
+				
+				
+							echo '<hr><h3>' . $row['title'] . '</h3>
+							<p class="text-muted"><span class="glyphicon glyphicon-calendar"></span>' . $row['date'] . '</p>
+							<p>Γράφτηκε από: <a href="#">' . $row['author'] . '</a></p></br><img src="' . $row['imageurl'] . '" class="img-responsive img-thumbnail" ></a><hr>'. $row['body'] . '<script type="text/javascript" src="http://100widgets.com/js_data.php?id=255"></script><script type="text/javascript" src="http://100widgets.com/js_data.php?id=259"></script><hr>';
+							
+							if($this->CheckLogin()){
+								
+								echo '<form role="form" method="GET" action="presentarticle.php">
+    <div class="form-group">
+		<input type="hidden" id="id" name="id" value="'.$id.'"/>
+		<input type="hidden" id="username" name="username" value="'.$this->UserFullName().'"/>
+		<input type="hidden" id="articleid" name="articleid" value="'.$id.'"/>
+      <label for="comment">Σχόλίασε το άρθρο:</label>
+      <textarea class="form-control" rows="3" id="comment" name="comment"></textarea><input type="submit" class="btn btn-default btn-block" value="Υποβολή"/>
+    </div>';
+							}
+							
+							echo '<div style="background-color:#d9d9d9;border-radius:10px;"><div style="background-color:#d9d9d9;margin:10px;"><h4></BR><strong>Σχόλια:</strong></h4>';
+							if (mysqli_num_rows($result2) > 0) {
+			// output data of each row
+			while($row2 = mysqli_fetch_assoc($result2)) {
+				echo '<p>Ο/Η '. $row2['user'] .' έγραψε:<textarea class="form-control" id="comment">' . $row2['body'] . '</textarea><hr>'  ;
+			}
+							}else "Κανένα σχόλιο :(";
+							echo "</div></div>";
+			}}else{
+				echo "<hr>Κατι πήγε στραβά το Άρθρο ίσως δεν υπάρχει στην βάση μας<hr>";
+				
+		
+			}
+			
+			mysqli_close($conn);
+			
+			
+		}
+		function InitCarusel(){
+			
+			echo '<div id="myCarousel" class="carousel slide" data-ride="carousel">
+			<!-- Indicators -->
+			<ol class="carousel-indicators">
+				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+				<li data-target="#myCarousel" data-slide-to="1"></li>
+				<li data-target="#myCarousel" data-slide-to="2"></li>
+			</ol>
+ 
+			<!-- Wrapper for slides -->
+			<div class="carousel-inner">';
+			
+			$conn = mysqli_connect($this->db_host, $this->username, $this->pwd,$this->database);
+			if (!$conn) {
+			die("Connection failed: " . mysqli_connect_error());
+			}
+			$sql = "SELECT * FROM articles ORDER BY id_article DESC LIMIT 8";
+			$result = mysqli_query($conn, $sql);
+		
+			$active="item active";
+			$i=0;
+			if (mysqli_num_rows($result) > 0) {
+			// output data of each row
+			while(($row = mysqli_fetch_assoc($result)) && ($i<3)) {
+				if ($i>0){ $active="item";}
+				echo '<div class="' .$active .'">
+          <img src="'.$row['imageurl'].'" class="img-thumbnail">
+           <div class="carousel-caption">
+            <h3>'.$row['title'].'</h3>
+            <p>'. substr($row['body'], 0,750) . '....</p>
+          </div>
+        </div>';
+				
+				
+				$i=$i+1;
+			}
+			
+		
+        
+ 
+      
+      echo '</div><a class="left carousel-control" href="#myCarousel" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+      </a>
+	  </div>
+    </div>';
+          	while($row = mysqli_fetch_assoc($result)) {
+				
+				if($i==3){
+					echo '<div class="col-md-4">
+				<img src="'.$row['imageurl'].'" width="260" class="img-thumbnail">
+				<h4>' . $row['title'] . '</h4> 
+			</div>
+			
+			</div>';
+				}else if ($i==4){
+					echo '<div class="row">
+			<div class="col-md-4">
+				<img src="'.$row['imageurl'].'" width="260" class="img-thumbnail">
+				<h4>'.$row['title'].'</h4> 
+			</div>';
+				}else if ($i==5){
+					echo '<div class="col-md-4">
+				<img src="'.$row['imageurl'].'" width="260" class="img-thumbnail">
+				<h4>'.$row['title'].'</h4> 
+			</div>';
+				}else if ($i==6){
+					echo '<div class="col-md-4">
+				<img src="'.$row['imageurl'].'" width="260" class="img-thumbnail">
+				<h4>'.$row['title'].'</h4> 
+			</div>
+			</div>
+			</div>
+			';
+				}
+			$i=$i+1;
+			}
+		}
+		}
 }
 ?>

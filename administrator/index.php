@@ -6,7 +6,7 @@ if(isset($_POST['submitted']))
    if($administration->validateForm())
    {
 	   if($administration->CheckUser()){
-	   $administration->RedirectToURL("centralmenu.php");
+	   $administration->RedirectToURL("admin.php");
 	   }
    }
 }
@@ -22,29 +22,6 @@ if(isset($_POST['submitted']))
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <style>
-		body {
-			width: 100px;
-			height: 100px;
-			background-color: #ffd700;;
-			-webkit-animation-name: example; /* Chrome, Safari, Opera */
-			-webkit-animation-duration: 4s; /* Chrome, Safari, Opera */
-			animation-name: example;
-			animation-duration: 5s;
-		}
-
-		/* Chrome, Safari, Opera */
-			@-webkit-keyframes example {
-			from {background-color: red;}
-			to {background-color: #ffd700;}
-		}
-
-		/* Standard syntax */
-			@keyframes example {
-			from {background-color: red;}
-			to {background-color: #ffd700;}
-		}
-	</style>
 </head>
 <body>
 	<div class="container" style="max-width:600px;margin: auto;">

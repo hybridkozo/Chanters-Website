@@ -214,31 +214,47 @@
 			if (!$conn) {
 			die("Connection failed: " . mysqli_connect_error());
 			}
-			$sql = "SELECT * from articles where id_category='1'";
+			$sql = "SELECT * from articles where id_category='1' ORDER BY id_article DESC";
 			$result = mysqli_query($conn, $sql);
 			
 			if (mysqli_num_rows($result) > 0) {
 			// output data of each row
 			while($row = mysqli_fetch_assoc($result)) {
 				
-				echo '<table><tr><td><img src="' . $row['imageurl'] . '" style="margin:10px;" class="img-thumbnail" alt="Cinque Terre" width="200" height="150">
-						</td>
-						<td >
-						<div style="margin:20px;">' . $row['date'] . '<span style="background-color:red;color:white;font-weight: bold;font-style: italic;"> NEW </span>
-					    <h3>' . $row['title'] . '</h3>
-						' . substr($row['body'], 0,100) . '<a href="#">...Περισότερα</a>
-						</div>
-					</td></tr></table>
-					<hr>';
+				//echo '<table><tr><td><img src="' . $row['imageurl'] . '" style="margin:10px;" class="img-thumbnail" alt="Cinque Terre" width="200" height="150">
+					//	</td>
+						//<td >
+						//<div style="margin:20px;">' . $row['date'] . '<span style="background-color:red;color:white;font-weight: bold;font-style: italic;"> NEW </span>
+					    //<h3>' . $row['title'] . '</h3>
+						//' . substr($row['body'], 0,100) . '<a href="#">...Περισότερα</a>
+						//</div>
+					//</td></tr></table>
+					//<hr>';
+							echo '<div class="row">
+        <div class="col-md-4"><a href="presentarticle.php?id=' . $row['id_article'] . '" class=""><img src="' . $row['imageurl'] . '" class="img-responsive img-rounded img-thumbnail"></a>
+        </div>
+        <div class="col-md-8">
+          <a class="ahref" href="presentarticle.php?id=' . $row['id_article'] . '"><h3 class="title">' . $row['title'] . '</h3></a>
+          <p class="text-muted"><span class="glyphicon glyphicon-calendar"></span>' . $row['date'] . '</p>
+          <p>' . substr($row['body'], 0,750) . '<a href="presentarticle.php?id=' . $row['id_article'] . '">...Περισότερα</a>
+            </p><p class="text-muted">Γράφτηκε από: <a href="#">' . $row['author'] . '</a></p>
+          
+        </div>
+      </div>
+      <hr>';
 				
 			}
 			}else{
 				echo "Κανένα άρθρο σε αυτή την κατηγορία";
+				
+		
 			}
 			
 			mysqli_close($conn);
 			
 		}
+		
+		
 		
 		
 	}
