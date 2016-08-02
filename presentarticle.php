@@ -36,11 +36,52 @@ if(isset($_GET['code']))
 <meta charset="utf-8">
 <title>Σύλογος Ιεροψαλτών</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="style/custom.css">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <script type='text/javascript' src='scripts/gen_validatorv31.js'></script>
   <script src="scripts/pwdwidget.js" type="text/javascript"></script> 
+  
+  <style>
+  .ahref:link {
+    color: black;
+}
+
+/* visited link */
+.ahref:visited {
+    color: black;
+}
+
+/* mouse over link */
+.ahref:hover {
+    color: clack;
+}
+
+/* selected link */
+.ahref:active {
+color: black;}
+	
+	
+	.footerlinks:link {
+    color: #f2f2f2;
+}
+
+/* visited link */
+.footerlinks:visited {
+    color: #f2f2f2;
+}
+
+/* mouse over link */
+.footerlinks:hover {
+    color: white;
+}
+
+/* selected link */
+.footerlinks:active {
+    color: black;
+}
+  </style>
 </head>
 <body>
     <div class="container">

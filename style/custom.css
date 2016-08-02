@@ -1,0 +1,74 @@
+/*footer list non list li bullets*/
+  #list{
+	list-style-type: none;  
+	  
+  }
+  
+  
+	.ahref:link {
+     color: black;
+	 list-style-type: none;
+	}
+
+	/* visited link */
+	.ahref:visited {
+    color: black;
+	list-style-type: none;
+	}
+
+	/* mouse over link */
+	.ahref:hover {
+    color: black;
+	list-style-type: none;
+	}
+
+	/* selected link */
+	.ahref:active {
+	list-style-type: none;	
+	color: black;}
+
+	.ahref2:link {
+    color: black;
+	}
+
+	/* visited link */
+	.ahref2:visited {
+    color: black;
+	}
+
+	/* mouse over link */
+	.ahref2:hover {
+    color: 	#808080;
+	background: #00ff00;
+	}
+
+	/* selected link */
+	.ahref2:active {
+	color: black;
+	background-color:#f2f2f2;}
+	
+	
+	.footerlinks:link {
+    color: #f2f2f2;
+	}
+
+	/* visited link */
+	.footerlinks:visited {
+    color: #f2f2f2;
+	}
+
+	/* mouse over link */
+	.footerlinks:hover {
+    color: 	#808080;
+	}
+
+	/* selected link */
+	.footerlinks:active {
+    color: black;
+	}
+	
+	/*footer titles design*/
+	#footertitles{
+		color: white;
+		font:bold;
+	}

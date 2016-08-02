@@ -1,21 +1,6 @@
 <?PHP
 /*
-    Registration/Login script from HTML Form Guide
-    V1.0
-
-    This program is free software published under the
-    terms of the GNU Lesser General Public License.
-    http://www.gnu.org/copyleft/lesser.html
-    
-
-This program is distributed in the hope that it will
-be useful - WITHOUT ANY WARRANTY; without even the
-implied warranty of MERCHANTABILITY or FITNESS FOR A
-PARTICULAR PURPOSE.
-
-For updates, please visit:
-http://www.html-form-guide.com/php-form/php-registration-form.html
-http://www.html-form-guide.com/php-form/php-login-form.html
+ 
 
 */
 require_once("class.phpmailer.php");
@@ -34,6 +19,10 @@ class FGMembersite
     var $rand_key;
     
     var $error_message;
+	
+	var $validationerror;
+	
+	
     
     //-----Initialization -------
     function FGMembersite()
@@ -942,12 +931,12 @@ class FGMembersite
 			// output data of each row
 			while(($row = mysqli_fetch_assoc($result)) && ($i<3)) {
 				if ($i>0){ $active="item";}
-				echo '<div class="' .$active .'">
+				echo '<div class="' .$active .'"><a class="ahref" href="presentarticle.php?id='.$row['id_article'].'">
           <img src="'.$row['imageurl'].'" class="img-thumbnail">
            <div class="carousel-caption">
             <h3>'.$row['title'].'</h3>
             <p>'. substr($row['body'], 0,750) . '....</p>
-          </div>
+          </div></a>
         </div>';
 				
 				
@@ -969,27 +958,35 @@ class FGMembersite
           	while($row = mysqli_fetch_assoc($result)) {
 				
 				if($i==3){
-					echo '<div class="col-md-4">
+					echo '<a class="ahref2" href="presentarticle.php?id='.$row['id_article'].'"><div class="col-md-4">
 				<img src="'.$row['imageurl'].'" width="260" class="img-thumbnail">
-				<h4>' . $row['title'] . '</h4> 
-			</div>
+				<h4><strong>' . $row['title'] . '</strong></h4> 
+				<p>'. substr($row['body'], 0,750) .'...Περισότερα</p>
+			</div></a>
 			
 			</div>';
 				}else if ($i==4){
 					echo '<div class="row">
-			<div class="col-md-4">
+			<a class="ahref2" href="presentarticle.php?id='.$row['id_article'].'"><div class="col-md-4">
 				<img src="'.$row['imageurl'].'" width="260" class="img-thumbnail">
-				<h4>'.$row['title'].'</h4> 
-			</div>';
+				<h4><strong>'.$row['title'].'</strong></h4> 
+				<p>'. substr($row['body'], 0,750) .'...Περισότερα</p>
+			</div></a>';
 				}else if ($i==5){
-					echo '<div class="col-md-4">
+					echo '<a class="ahref2" href="presentarticle.php?id='.$row['id_article'].'"><div class="col-md-4">
 				<img src="'.$row['imageurl'].'" width="260" class="img-thumbnail">
-				<h4>'.$row['title'].'</h4> 
-			</div>';
+				<h4><strong>'.$row['title'].'</strong></h4> 
+				<p>'. substr($row['body'], 0,750) .'...Περισότερα</p>
+			</div></a>';
 				}else if ($i==6){
-					echo '<div class="col-md-4">
+					echo '<a class="ahref2" href="presentarticle.php?id='.$row['id_article'].'"><div class="col-md-4">
 				<img src="'.$row['imageurl'].'" width="260" class="img-thumbnail">
-				<h4>'.$row['title'].'</h4> 
+				<h4><strong>'.$row['title'].'</strong></h4> 
+				<p>'. substr($row['body'], 0,750) .'...Περισότερα</p>
+			</div></a>
+			<div class="row">
+			<div class="col-md-12">
+			<hr>
 			</div>
 			</div>
 			</div>
@@ -999,5 +996,53 @@ class FGMembersite
 			}
 		}
 		}
+		
+		function ValidateCommunitySubmission()
+    {
+       
+			if ($_SERVER["REQUEST_METHOD"] == "POST"){
+				if (empty($_POST["name"])){
+					$this->validationerror="Κάτι δεν έχετε συμπληρώσει σωστά";
+				 return false;
+				}
+				if (empty($_POST["email"])){
+					$this->validationerror="Κάτι δεν έχετε συμπληρώσει σωστά";
+					return false;
+				}
+				if (empty($_POST["message"])){
+					$this->validationerror="Κάτι δεν έχετε συμπληρώσει σωστά";
+					return false;
+				}
+				else{
+					
+					return true;
+				}
+		
+				
+			}
+    }
+	function SendCommunityEmail($address, $name, $message){
+		
+	
+        $mailer = new PHPMailer();
+        
+        $mailer->CharSet = 'utf-8';
+        
+        $mailer->AddAddress($this->GetFromAddress(),"giannis");
+        
+        $mailer->Subject = "Μήνυμα από ".$name;
+
+        $mailer->From = $address;        
+        
+        $mailer->Body = $message;
+
+        if(!$mailer->Send())
+        {
+            $this->HandleError("Αποτυχία αποστολής email επιβεβαίωσης εγγραφής");
+            return false;
+        }
+        return true;
+    
+	}
 }
 ?>

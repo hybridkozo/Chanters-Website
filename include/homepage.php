@@ -4,5 +4,6 @@
 			<?php
 				$fgmembersite->InitCarusel();
 		    ?>
+		</div>
 		
 			

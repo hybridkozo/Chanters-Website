@@ -42,14 +42,14 @@ if(isset($_POST['submitted']))
 					<label for='username' class="control-label col-md-3">Όνομα Χρήστη*:</label>
 					<div class="col-md-9">
 						<input type='text' name='username' id='username' value="<?php echo $administration->username?>" class="form-control" maxlength="50" /></br>
-						<span id='login_username_errorloc' class='error'><?php echo $administration->errorUsername; ?></span>
+						<span  class='error'><?php echo $administration->errorUsername; ?></span>
 					</div>	
 				</div>
 				<div class="form-group">
 					<label for='password' class="control-label col-md-3">Κωδικός*:</label>
 					<div class="col-md-9">
 						<input type='password' class="form-control" name='password' id='password' value="<?php echo $administration->password?>" maxlength="50" /><br/>
-						<span id='login_password_errorloc' class='error'><?php echo $administration->errorPassword; ?></span>
+						<span class='error'><?php echo $administration->errorPassword; ?></span>
 					</div>
 				</div>
 

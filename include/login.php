@@ -26,14 +26,14 @@ if(isset($_POST['submitted']))
 					<label for='username' class="control-label col-md-3">Όνομα Χρήστη*:</label>
 					<div class="col-md-9">
 						<input type='text' name='username' id='username' class="form-control" value='<?php echo $fgmembersite->SafeDisplay('username') ?>' maxlength="50" /><br/>
-						<span id='login_username_errorloc' class='error'></span>
+						<span id='login_username_errorloc' class='error' style="color:red;"></span>
 					</div>	
 				</div>
 				<div class="form-group">
 					<label for='password' class="control-label col-md-3">Κωδικός*:</label>
 					<div class="col-md-9">
 						<input type='password' class="form-control" name='password' id='password' maxlength="50" /><br/>
-						<span id='login_password_errorloc' class='error'></span>
+						<span id='login_password_errorloc' class='error' style="color:red;"></span>
 					</div>
 				</div>
 
@@ -56,9 +56,9 @@ if(isset($_POST['submitted']))
 			frmvalidator.EnableOnPageErrorDisplay();
 			frmvalidator.EnableMsgsTogether();
 
-			frmvalidator.addValidation("username","req"	,"Please provide your username");
+			frmvalidator.addValidation("username","req"	,"Παρακαλώ δώστε ένα όνομα χρήστη");
     
-			frmvalidator.addValidation("password","req","Please provide the password");
+			frmvalidator.addValidation("password","req","Παρακαλώ δώστε τον κωδικό σας");
 
 			// ]]>
 			</script>
