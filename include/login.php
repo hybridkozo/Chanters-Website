@@ -46,6 +46,15 @@ if(isset($_POST['submitted']))
 					<div class='col-md-12'><a href='index.php?action=reset_password.php'>Ξέχασες τον κωδικό σου;</a></div>
 				</div>	
 			</form>
+			
+			<hr>
+			
+			<h4> <strong>Δεν έχεις λογαριασμό? Kανένα πρόβλημα κάνε τώρα εγγραφή στην ιστοσελίδα μας:</strong><h4>
+			<a class="footerlinks" href="index.php?action=register.php" ><button type="button" class="btn btn-success btn-block">Εγγραφή τώρα </button></a>
+			
+			<hr>
+			
+			
 			<!-- client-side Form Validations:
 			Uses the excellent form validation script from JavaScript-coder.com-->
 

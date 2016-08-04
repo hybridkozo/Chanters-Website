@@ -5,7 +5,8 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
-						</button>			
+						</button>	
+							<a class="navbar-brand" href="#"><strong></strong></a>
 					</div>
 					<div class="collapse navbar-collapse"  id="myNavbar">				
 				<?php

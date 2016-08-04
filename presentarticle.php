@@ -95,7 +95,7 @@ color: black;}
 		
 <div class="col-md-9">
 			<?php
-require_once("administrator/include/validation.php");
+//require_once("administrator/include/validation.php");
 
 
 if(!$fgmembersite->CheckLogin())

@@ -1,8 +1,8 @@
 <?php
-				
-				$dbhost = 'unipichanters.czbrbzfqqipe.eu-central-1.rds.amazonaws.com:3306';
-				$dbuser = 'unipiAdmin0';
-				$dbpass = 'unipialepis8never';
+				require_once("membersite_config.php");
+				$dbhost = $fgmembersite->db_host;
+				$dbuser = $fgmembersite->username;
+				$dbpass = $fgmembersite->pwd;
 				$conn = mysql_connect($dbhost, $dbuser, $dbpass);
 				if(!$conn){
 					die('could not connect: ' . mysql_error());
@@ -21,7 +21,7 @@
 				echo '<ul class="nav navbar-nav">';
 				while($row = mysql_fetch_array($retval, MYSQL_ASSOC)){
 					if ($i==0 and $row['submenu']==NULL){
-						echo '<li class="active"><a href="' . $row['link'] . '">' . $row['name'] . '</a></li>';
+						echo '<li><a href="' . $row['link'] . '">' . $row['name'] . '</a></li>';
 						
 					}
 					else if ($i>0 and $row['submenu']==NULL){
@@ -37,7 +37,7 @@
 							die('Could not get data: ' . mysql_error());
 						}
 						if ($i==0){
-						echo '<li class="dropdown, active"><a class="dropdown-toggle" data-toggle="dropdown" href=" ' . $row['link'] . '">' . $row['name'] . '<span class="caret"></span></a>';
+						echo '<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href=" ' . $row['link'] . '">' . $row['name'] . '<span class="caret"></span></a>';
 						}
 						else{
 							echo '<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="' . $row['link'] . '">' . $row['name'] . '<span class="caret"></span></a>';

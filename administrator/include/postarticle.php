@@ -1,5 +1,5 @@
 <?php
-require_once('validation.php');
+require_once('validation2.php');
 $target_dir = $_SERVER['DOCUMENT_ROOT'] . '/Chanters-Website/media/articlesimages/';
 $path='/Chanters-Website/media/articlesimages/' . basename($_FILES["fileToUpload"]["name"]);
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);

@@ -33,4 +33,42 @@
 						</div>
 					</div>
 				</form>
+				<hr>
 				<h3> Edit Articles: </h3>
+				<div class="table-responsive">
+					<table class="table">
+					<thead>
+						<tr>
+						<th>#id</th>
+						<th>Title</th>
+						<th>Author</th>
+						<th><form>
+							<?php
+							$administration->PrintArticleCategoriesInSelectList();
+							//$administration->ShowArticlesInTableViaCategory("null");
+							?>
+							
+						</form></th>
+						
+						
+						</tr>
+					</thead>
+						<tbody id="txtHint">
+						 <?php 
+						 $administration->ShowArticlesInTableViaCategory("null");
+						 ?>
+						</tbody>
+					</table>
+					</div>
+				
+				<b>Επιλέξτε κατηγορία για να εμφανιστούν τα Αρθρα</b>
+				
+				<hr>
+				
+				
+				
+				
+				
+				
+				<br>
+				

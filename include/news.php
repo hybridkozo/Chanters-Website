@@ -1,6 +1,5 @@
 <div class="col-md-9">
 			<?php
-require_once("administrator/include/validation.php");
 
 if(!$fgmembersite->CheckLogin())
 {
@@ -8,6 +7,6 @@ if(!$fgmembersite->CheckLogin())
     exit;
 }
 
-$administration->PresentArticles('news');
+$fgmembersite->PresentArticles('news');
 ?>
 </div>

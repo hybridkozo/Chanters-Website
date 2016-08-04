@@ -39,6 +39,58 @@ if (isset($_GET['id']))
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
   <script>tinymce.init({ selector:'textarea' });</script>
+  
+  
+	<script>
+	function showArticles(str) {
+		if (str == "") {
+        document.getElementById("txtHint").innerHTML = "";
+        return;
+		} else { 
+			if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+			} else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			xmlhttp.onreadystatechange = function() {
+				if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+					document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
+				}
+			};
+			xmlhttp.open("GET","include/editarticle.php?q="+str,true);
+			xmlhttp.send();
+		}
+	}
+
+	</script>
+	<script>
+		
+	function deleteArticle(str,cat) {
+		if (str == "") {
+        document.getElementById("txtHint").innerHTML = "";
+        return;
+		} else { 
+			if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+			} else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			xmlhttp.onreadystatechange = function() {
+				if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+					document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
+				}
+			};
+			xmlhttp.open("GET","include/deletearticle.php?q="+str+"&w="+cat,true);
+			xmlhttp.send();
+		}
+	}
+	</script>
+  
+  
 </head>
 <body>
 	<div class="container">

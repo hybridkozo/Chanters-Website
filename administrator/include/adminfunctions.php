@@ -70,7 +70,7 @@
 			if (!$conn) {
 			die("Connection failed: " . mysqli_connect_error());
 			}
-			$sqlusername=$this->SanitizeForSQL($this->username);
+			$sqlusername=$this->SanitizeForSQL($conn,$this->username);
 			$sqlpassword=md5($this->password);
 			
 			$sql = "select name, email from users where username='$sqlusername' and password='$sqlpassword' and admin='1'";
@@ -95,11 +95,11 @@
 		}
 		
 		
-		 function SanitizeForSQL($str){
+		 function SanitizeForSQL($conn,$str){
 			 
 			if( function_exists( "mysql_real_escape_string" ) ){
 				
-              $ret_str = mysql_real_escape_string( $str );
+              $ret_str = mysqli_real_escape_string($conn, $str );
 			}else{
               $ret_str = addslashes( $str );
 			}
@@ -209,50 +209,7 @@
 			
 		}
 		
-		function PresentArticles($category){
-			$conn = mysqli_connect($this->server, $this->user, $this->pass,$this->database);
-			if (!$conn) {
-			die("Connection failed: " . mysqli_connect_error());
-			}
-			$sql = "SELECT * from articles where id_category='1' ORDER BY id_article DESC";
-			$result = mysqli_query($conn, $sql);
-			
-			if (mysqli_num_rows($result) > 0) {
-			// output data of each row
-			while($row = mysqli_fetch_assoc($result)) {
-				
-				//echo '<table><tr><td><img src="' . $row['imageurl'] . '" style="margin:10px;" class="img-thumbnail" alt="Cinque Terre" width="200" height="150">
-					//	</td>
-						//<td >
-						//<div style="margin:20px;">' . $row['date'] . '<span style="background-color:red;color:white;font-weight: bold;font-style: italic;"> NEW </span>
-					    //<h3>' . $row['title'] . '</h3>
-						//' . substr($row['body'], 0,100) . '<a href="#">...Περισότερα</a>
-						//</div>
-					//</td></tr></table>
-					//<hr>';
-							echo '<div class="row">
-        <div class="col-md-4"><a href="presentarticle.php?id=' . $row['id_article'] . '" class=""><img src="' . $row['imageurl'] . '" class="img-responsive img-rounded img-thumbnail"></a>
-        </div>
-        <div class="col-md-8">
-          <a class="ahref" href="presentarticle.php?id=' . $row['id_article'] . '"><h3 class="title">' . $row['title'] . '</h3></a>
-          <p class="text-muted"><span class="glyphicon glyphicon-calendar"></span>' . $row['date'] . '</p>
-          <p>' . substr($row['body'], 0,750) . '<a href="presentarticle.php?id=' . $row['id_article'] . '">...Περισότερα</a>
-            </p><p class="text-muted">Γράφτηκε από: <a href="#">' . $row['author'] . '</a></p>
-          
-        </div>
-      </div>
-      <hr>';
-				
-			}
-			}else{
-				echo "Κανένα άρθρο σε αυτή την κατηγορία";
-				
 		
-			}
-			
-			mysqli_close($conn);
-			
-		}
 		
 		function EditMenu(){
 			$conn = mysqli_connect($this->server, $this->user, $this->pass,$this->database);
@@ -306,6 +263,82 @@
     </div>
   </form>';
 		
+		}
+		
+		function PrintArticleCategoriesInSelectList(){
+			$conn = mysqli_connect($this->server, $this->user, $this->pass,$this->database);
+			if (!$conn) {
+			die("Connection failed: " . mysqli_connect_error());
+			}
+			$sql = "SELECT * from category";
+			$result = mysqli_query($conn, $sql);
+			echo	' <label for="sel1">Κατηγορία (προεπιλογή όλες):</label>
+			<select name="users" class="form-control" id="sel1" onchange="showArticles(this.value)">
+								<option value="null">Επιλέξε κατηγορία...</option>';
+			while($row = mysqli_fetch_assoc($result)) {
+				
+			echo	'<option value="'.$row['id_category'].'">'.$row['name'].'</option>';
+				
+			}
+			
+			echo '</select>';
+			
+			mysqli_close($conn);
+		}
+		
+		function ShowArticlesInTableViaCategory($category){
+			
+			$conn = mysqli_connect($this->server, $this->user, $this->pass,$this->database);
+			if (!$conn) {
+			die("Connection failed: " . mysqli_connect_error());
+			}
+			if ($category=="null"){
+				$sql = "SELECT * from articles ORDER BY id_article DESC";
+			}else{
+			$sql = "SELECT * from articles where id_category='$category' ORDER BY id_article DESC";
+			}
+			$result = mysqli_query($conn, $sql);
+			
+			while($row = mysqli_fetch_assoc($result)) {
+				
+			echo	'<tr><td>'.$row['id_article'].'</td><td>'.$row['title'].'</td><td>'.$row['author'].'</td><td>'.$row['id_category'].'</td><td><button onclick="deleteArticle('.$row['id_article'].','.$category.')" class="btn btn-success">Διαγραφή</button></td></tr>';
+				
+			}
+			
+			
+			
+			mysqli_close($conn);
+			
+			
+		}
+		
+		function DeleteArticle($id,$category){
+			
+			$conn = mysqli_connect($this->server, $this->user, $this->pass,$this->database);
+			if (!$conn) {
+			die("Connection failed: " . mysqli_connect_error());
+			}
+			
+			$delsql="DELETE FROM articles WHERE id_article=$id";
+			mysqli_query($conn, $delsql);
+			if ($category=="null"){
+				$sql = "SELECT * from articles ORDER BY id_article DESC";
+			}else{
+			$sql = "SELECT * from articles where id_category='$category' ORDER BY id_article DESC";
+			}
+			$result = mysqli_query($conn, $sql);
+			
+			while($row = mysqli_fetch_assoc($result)) {
+				
+			echo	'<tr><td>'.$row['id_article'].'</td><td>'.$row['title'].'</td><td>'.$row['author'].'</td><td>'.$row['id_category'].'</td><td><button onclick="deleteArticle('.$row['id_article'].')" class="btn btn-success">Διαγραφή</button></td></tr>';
+				
+			}
+			
+			
+			
+			mysqli_close($conn);
+			
+			
 		}
 		
 		
