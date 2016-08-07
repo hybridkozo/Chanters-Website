@@ -38,8 +38,8 @@
 
 	/* mouse over link */
 	.ahref2:hover {
-    color: 	#808080;
-	background: #00ff00;
+	
+	background: #808080;
 	}
 
 	/* selected link */
@@ -49,12 +49,12 @@
 	
 	
 	.footerlinks:link {
-    color: #f2f2f2;
+    color: #808080;
 	}
 
 	/* visited link */
 	.footerlinks:visited {
-    color: #f2f2f2;
+    color: #808080;
 	}
 
 	/* mouse over link */
@@ -69,6 +69,10 @@
 	
 	/*footer titles design*/
 	#footertitles{
-		color: white;
+		color: #808080;
 		font:bold;
 	}
+	
+	.headerbackground {
+    background-image: url("../media/cover.jpg");
+}

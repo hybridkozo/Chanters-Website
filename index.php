@@ -18,6 +18,7 @@ if(isset($_GET['code']))
   <link rel="stylesheet" type="text/css" href="style/custom.css">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+ 
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <script type='text/javascript' src='scripts/gen_validatorv31.js'></script>
   <script src="scripts/pwdwidget.js" type="text/javascript"></script> 
@@ -28,10 +29,37 @@ $(document).ready(function() {
 	});
 });
 </script>
+<script>
+    $(document).ready(function() {
+    if (window.location.href.indexOf("history") > -1) {
+        $("#Ο Σύλογος").attr('class', 'dropdown active');
+	}});
+​
+</script>
+
+<script>
+$(document).ready(function(){
+    $("#zoom").mouseenter(function(){
+        
+    });
+	$("#zoom2").mouseenter(function(){
+       
+    });
+	$("#zoom3").mouseenter(function(){
+        
+    });
+	$("#zoom4").mouseenter(function(){
+        
+    });
+});
+</script>
+
+
+
   
   
 </head>
-<body>
+<body style="background-color: #f2f2f2">
     <div class="container">
 		<?php
 			include("template/header.php");
@@ -89,5 +117,6 @@ $(document).ready(function() {
 			
 
 	</div>
+	
 </body>
 </html>

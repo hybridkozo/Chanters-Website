@@ -212,7 +212,9 @@
 		
 		
 		function EditMenu(){
+			
 			$conn = mysqli_connect($this->server, $this->user, $this->pass,$this->database);
+			mysqli_query($conn,"SET NAMES 'utf8'");
 			if (!$conn) {
 			die("Connection failed: " . mysqli_connect_error());
 			}
@@ -244,7 +246,7 @@
         <td>'.$row['name'].'</td>
 			<td>'.$row['description'].'</td>
         <td>'.$row['link'].'</td>
-        <td>'.$row['sequence'].'</td>
+        <td><input class="form-control" type="text" id="'.$row['idmenu'].'" onchange="MenuChangeSequence('.$row['idmenu'].')" value="'.$row['sequence'].'"/></td>
         <td>'.$row['submenu'].'</td>
       </tr>';
 			
@@ -256,13 +258,9 @@
 		echo '  </tbody>
   </table>
   </div>
-    <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn btn-default">Submit</button>
-      </div>
-    </div>
+  <p>Αλλάζοντας τις τιμές στο πεδίο sequence αυτόματα αποθηκεύονται στην βάση πατώντας ENTER</p>
   </form>';
-		
+		mysqli_close($conn);
 		}
 		
 		function PrintArticleCategoriesInSelectList(){
@@ -339,6 +337,60 @@
 			mysqli_close($conn);
 			
 			
+		}
+		
+		function ChangeMenuSequence($id,$value){
+			
+			$conn = mysqli_connect($this->server, $this->user, $this->pass,$this->database);
+			if (!$conn) {
+			die("Connection failed: " . mysqli_connect_error());
+			}
+			
+			$sql="UPDATE menu SET sequence=$value WHERE idmenu=$id";
+			mysqli_query($conn, $sql);
+			
+			
+			$sql = "SELECT * from menu";
+			mysqli_query($conn,"SET NAMES 'utf8'");
+			$result = mysqli_query($conn, $sql);
+			echo '<h2>Edit Menu</h2>
+			<form role="form">
+    <div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>#id</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Link</th>
+        <th>Sequence</th>
+        <th>Submenu</th>
+      </tr>
+    </thead>
+    <tbody>';
+     
+			
+			if (mysqli_num_rows($result) > 0) {
+			// output data of each row
+			while($row = mysqli_fetch_assoc($result)) {
+			echo '
+			 <tr>
+        <td>'.$row['idmenu'].'</td>
+        <td>'.$row['name'].'</td>
+			<td>'.$row['description'].'</td>
+        <td>'.$row['link'].'</td>
+        <td><input class="form-control" type="text" id="'.$row['idmenu'].'" onchange="MenuChangeSequence('.$row['idmenu'].')" value="'.$row['sequence'].'"/></td>
+        <td>'.$row['submenu'].'</td>
+      </tr>';
+			}}
+				echo '  </tbody>
+  </table>
+  </div>
+  <p>Αλλάζοντας τις τιμές στο πεδίο sequence αυτόματα αποθηκεύονται στην βάση πατώντας ENTER</p>
+  </form>';
+			//$this->EditMenu();
+			
+			mysqli_close($conn);
 		}
 		
 		

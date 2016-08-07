@@ -958,32 +958,32 @@ class FGMembersite
           	while($row = mysqli_fetch_assoc($result)) {
 				
 				if($i==3){
-					echo '<a class="ahref2" href="presentarticle.php?id='.$row['id_article'].'"><div class="col-md-4">
+					echo '<a id="zoom" class="ahref2" href="presentarticle.php?id='.$row['id_article'].'"><div class="col-md-4" ><div class="ahref2">
 				<img src="'.$row['imageurl'].'" width="260" class="img-thumbnail">
 				<h4><strong>' . $row['title'] . '</strong></h4> 
 				<p>'. substr($row['body'], 0,750) .'...Περισότερα</p>
-			</div></a>
+			</div></div></a>
 			
 			</div>';
 				}else if ($i==4){
 					echo '<div class="row">
-			<a class="ahref2" href="presentarticle.php?id='.$row['id_article'].'"><div class="col-md-4">
+			<a id="zoom2" class="ahref2" href="presentarticle.php?id='.$row['id_article'].'"><div id="zoom" class="col-md-4"><div class="ahref2">
 				<img src="'.$row['imageurl'].'" width="260" class="img-thumbnail">
 				<h4><strong>'.$row['title'].'</strong></h4> 
 				<p>'. substr($row['body'], 0,750) .'...Περισότερα</p>
-			</div></a>';
+			</div></div></a>';
 				}else if ($i==5){
-					echo '<a class="ahref2" href="presentarticle.php?id='.$row['id_article'].'"><div class="col-md-4">
+					echo '<a id="zoom3" class="ahref2" href="presentarticle.php?id='.$row['id_article'].'"><div class="col-md-4"><div class="ahref2">
 				<img src="'.$row['imageurl'].'" width="260" class="img-thumbnail">
 				<h4><strong>'.$row['title'].'</strong></h4> 
 				<p>'. substr($row['body'], 0,750) .'...Περισότερα</p>
-			</div></a>';
+			</div></div></a>';
 				}else if ($i==6){
-					echo '<a class="ahref2" href="presentarticle.php?id='.$row['id_article'].'"><div class="col-md-4">
+					echo '<a id="zoom4" class="ahref2" href="presentarticle.php?id='.$row['id_article'].'"><div class="col-md-4"><div class="ahref2">
 				<img src="'.$row['imageurl'].'" width="260" class="img-thumbnail">
 				<h4><strong>'.$row['title'].'</strong></h4> 
 				<p>'. substr($row['body'], 0,750) .'...Περισότερα</p>
-			</div></a>
+			</div></div></a>
 			<div class="row">
 			<div class="col-md-12">
 			<hr>
@@ -1086,6 +1086,66 @@ class FGMembersite
 			}
 			
 			mysqli_close($conn);
+			
+		}
+		
+		function SiteMap(){
+			
+			$conn = mysqli_connect($this->db_host, $this->username, $this->pwd,$this->database);
+				if(!$conn){
+					die('could not connect: ' . mysql_error());
+				}
+				
+				$sql='SELECT * FROM menu ORDER by sequence;';
+				
+				mysqli_query($conn,"SET NAMES 'utf8'");
+				
+				$result = mysqli_query( $conn, $sql );
+				if(! $result )
+				{
+					die('Could not get data: ' . mysql_error());
+				}
+				$i=0;
+				echo '<ul >';
+				while($row = mysqli_fetch_assoc($result)){
+					if ($i==0 and $row['submenu']==NULL){
+						echo '<li id="list"><a class="footerlinks" href="' . $row['link'] . '"><strong>' . $row['name'] . '</strong></a></li>';
+						
+					}
+					else if ($i>0 and $row['submenu']==NULL){
+					echo '<li id="list" ><a class="footerlinks" href="' . $row['link'] . '"><strong>' . $row['name'] . '</strong></a></li>';
+					}
+					else
+					{
+						$id=$row['idmenu'];
+						$sql2="SELECT * FROM submenu WHERE idmenu='$id' ORDER BY sequence;" ;
+						$retval2 = mysqli_query( $conn, $sql2 );
+						if(! $retval2 )
+						{
+							die('Could not get data: ' . mysql_error());
+						}
+						if ($i==0){
+						echo '<li id="list" class="dropdown"><a class="dropdown-toggle footerlinks" data-toggle="dropdown" href=" ' . $row['link'] . '"><strong>' . $row['name'] . '</strong><span class="caret"></span></a>';
+						}
+						else{
+							echo '<li id="list" class="dropdown"><a class="dropdown-toggle footerlinks" data-toggle="dropdown" href="' . $row['link'] . '"><strong>' . $row['name'] . '</strong><span class="caret"></span></a>';
+						}
+						echo '<ul class="dropdown-menu">';
+						while($row2 = mysqli_fetch_assoc($retval2)){
+							echo '<li><a href="' . $row2['link'] . '">' . $row2['name'] . '</a></li>';
+						}
+						echo "</ul>";
+						echo "</li>";
+						
+					}
+					
+					$i++;
+				}
+				echo "</ul>";
+				
+				mysqli_close($conn);
+				
+			
 			
 		}
 }

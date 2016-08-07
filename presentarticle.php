@@ -43,47 +43,8 @@ if(isset($_GET['code']))
   <script type='text/javascript' src='scripts/gen_validatorv31.js'></script>
   <script src="scripts/pwdwidget.js" type="text/javascript"></script> 
   
-  <style>
-  .ahref:link {
-    color: black;
-}
-
-/* visited link */
-.ahref:visited {
-    color: black;
-}
-
-/* mouse over link */
-.ahref:hover {
-    color: clack;
-}
-
-/* selected link */
-.ahref:active {
-color: black;}
-	
-	
-	.footerlinks:link {
-    color: #f2f2f2;
-}
-
-/* visited link */
-.footerlinks:visited {
-    color: #f2f2f2;
-}
-
-/* mouse over link */
-.footerlinks:hover {
-    color: white;
-}
-
-/* selected link */
-.footerlinks:active {
-    color: black;
-}
-  </style>
 </head>
-<body>
+<body style="background-color: #f2f2f2">
     <div class="container">
 		<?php
 			include("template/header.php");

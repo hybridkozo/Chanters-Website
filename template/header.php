@@ -1,8 +1,17 @@
-<div class="page-header">
+<div class="page-header headerbackground" style="margin:0px; border-radius: 10px 10px 10px 10px;">
+<div style="margin: 15px">
 		
-			<h1>
-				<img src="media/images/logo.png" class="img-rounded" alt="Σύλογος Ιεροψαλτών" width="100" height="120">
-				Σύλογος Ιεροψαλτών 
+			
+			</br>
+			<h1 style="color:white;font-style:italic; font-family: Times New Roman, Times, serif;">
+				<strong>Σύλογος Ιεροψαλτών</strong> 
 			</h1>
-			<p>Ο Σύλογος Ιεροψαλτών είναι δίπλα σας από το 1924.</p>
-</div>
+			
+			</br>
+			</br>
+			<p style="color:white;font-style:italic; font-family: Times New Roman, Times, serif;"><strong>"Ο Σύλογος Ιεροψαλτών είναι δίπλα σας από το 1924"</strong></p>
+			</br>
+			
+			</div>
+			
+			</div>

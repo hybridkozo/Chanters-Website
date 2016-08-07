@@ -21,11 +21,11 @@
 				echo '<ul class="nav navbar-nav">';
 				while($row = mysql_fetch_array($retval, MYSQL_ASSOC)){
 					if ($i==0 and $row['submenu']==NULL){
-						echo '<li><a href="' . $row['link'] . '">' . $row['name'] . '</a></li>';
+						echo '<li id="'.$row['name'].'"><a href="' . $row['link'] . '"><strong>' . $row['name'] . '</strong></a></li>';
 						
 					}
 					else if ($i>0 and $row['submenu']==NULL){
-					echo '<li><a href="' . $row['link'] . '">' . $row['name'] . '</a></li>';
+					echo '<li id="'.$row['name'].'"><a href="' . $row['link'] . '"><strong>' . $row['name'] . '</strong></a></li>';
 					}
 					else
 					{
@@ -37,10 +37,10 @@
 							die('Could not get data: ' . mysql_error());
 						}
 						if ($i==0){
-						echo '<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href=" ' . $row['link'] . '">' . $row['name'] . '<span class="caret"></span></a>';
+						echo '<li id="'.$row['name'].'" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href=" ' . $row['link'] . '"><strong>' . $row['name'] . '</strong><span class="caret"></span></a>';
 						}
 						else{
-							echo '<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="' . $row['link'] . '">' . $row['name'] . '<span class="caret"></span></a>';
+							echo '<li id="'.$row['name'].'" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="' . $row['link'] . '"><strong>' . $row['name'] . '</strong><span class="caret"></span></a>';
 						}
 						echo '<ul class="dropdown-menu">';
 						while($row2 = mysql_fetch_array($retval2, MYSQL_ASSOC)){

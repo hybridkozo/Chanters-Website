@@ -1,18 +1,15 @@
 		<div class="footer" style="background-color:#0d0d0d;color:#cccccc;border-radius: 5px;">
 		<div class="row">
-			<div class="col-md-4">
-			<h3 id='footertitles'> Site Map </h3><hr>
+			<div class="col-md-4" >
+			<h3 id='footertitles' style="margin:20px;font-style:italic; font-family: Times New Roman, Times, serif;"> Site Map </h3><hr>
 			
-				<ul >
-					<li id='list' ><a class="footerlinks" href="#"><strong> Αρχική</strong></a></li>
-					<li id='list'> <a class="footerlinks" href="#"><strong>Ο Σύλογος μας</strong></a></li> 
-					<li id='list'> <a class="footerlinks" href="#"><strong>Τα νέα μας</strong></a></li> 
-					<li id='list'> <a class="footerlinks" href="#"><strong>Επικοινωνία</strong></a></li> 
-				</ul>
+			<?php
+			$fgmembersite->SiteMap();
+			?>
 				
 			</div>
 			<div class="col-md-4">
-			<h3 id='footertitles'> Social Media </h3> <hr>
+			<h3 id='footertitles' style="margin:20px;font-style:italic; font-family: Times New Roman, Times, serif;"> Social Media </h3> <hr>
 			
 			
 				<ul >
@@ -25,7 +22,7 @@
 				
 			</div>
 			<div class="col-md-4">
-			<h3 id='footertitles'> Επικοινωνία </h3><hr>
+			<h3 id='footertitles' style="margin:20px;font-style:italic; font-family: Times New Roman, Times, serif;"> Επικοινωνία </h3><hr>
 			
 				<p id="footertitles"><span class="glyphicon glyphicon-home"></span> Πραξιτέλους 236, Πειραιάς, Τ.Κ. 18633</p>
 				<p id="footertitles"> <span class="glyphicons glyphicons-iphone"></span>+306971903121</p>

@@ -32,7 +32,7 @@ if(isset($_GET['code']))
   <script type='text/javascript' src='scripts/gen_validatorv31.js'></script>
   <script src="scripts/pwdwidget.js" type="text/javascript"></script> 
 </head>
-<body>
+<body style="background-color: #f2f2f2">
     <div class="container">
 		<?php
 			include("template/header.php");
