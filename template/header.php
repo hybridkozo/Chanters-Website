@@ -4,12 +4,12 @@
 			
 			</br>
 			<h1 style="color:white;font-style:italic; font-family: Times New Roman, Times, serif;">
-				<strong>Σύλογος Ιεροψαλτών</strong> 
+				<strong>Σύλλογος Ιεροψαλτών</strong> 
 			</h1>
 			
 			</br>
 			</br>
-			<p style="color:white;font-style:italic; font-family: Times New Roman, Times, serif;"><strong>"Ο Σύλογος Ιεροψαλτών είναι δίπλα σας από το 1924"</strong></p>
+			<p style="color:white;font-style:italic; font-family: Times New Roman, Times, serif;"><strong>"Ο Σύλλογος Ιεροψαλτών είναι δίπλα σας από το 1924"</strong></p>
 			</br>
 			
 			</div>

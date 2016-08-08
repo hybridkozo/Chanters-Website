@@ -961,7 +961,7 @@ class FGMembersite
 					echo '<a id="zoom" class="ahref2" href="presentarticle.php?id='.$row['id_article'].'"><div class="col-md-4" ><div class="ahref2">
 				<img src="'.$row['imageurl'].'" width="260" class="img-thumbnail">
 				<h4><strong>' . $row['title'] . '</strong></h4> 
-				<p>'. substr($row['body'], 0,750) .'...Περισότερα</p>
+				<p>'. substr($row['body'], 0,750) .'...Περισσότερα</p>
 			</div></div></a>
 			
 			</div>';
@@ -970,19 +970,19 @@ class FGMembersite
 			<a id="zoom2" class="ahref2" href="presentarticle.php?id='.$row['id_article'].'"><div id="zoom" class="col-md-4"><div class="ahref2">
 				<img src="'.$row['imageurl'].'" width="260" class="img-thumbnail">
 				<h4><strong>'.$row['title'].'</strong></h4> 
-				<p>'. substr($row['body'], 0,750) .'...Περισότερα</p>
+				<p>'. substr($row['body'], 0,750) .'...Περισσότερα</p>
 			</div></div></a>';
 				}else if ($i==5){
 					echo '<a id="zoom3" class="ahref2" href="presentarticle.php?id='.$row['id_article'].'"><div class="col-md-4"><div class="ahref2">
 				<img src="'.$row['imageurl'].'" width="260" class="img-thumbnail">
 				<h4><strong>'.$row['title'].'</strong></h4> 
-				<p>'. substr($row['body'], 0,750) .'...Περισότερα</p>
+				<p>'. substr($row['body'], 0,750) .'...Περισσότερα</p>
 			</div></div></a>';
 				}else if ($i==6){
 					echo '<a id="zoom4" class="ahref2" href="presentarticle.php?id='.$row['id_article'].'"><div class="col-md-4"><div class="ahref2">
 				<img src="'.$row['imageurl'].'" width="260" class="img-thumbnail">
 				<h4><strong>'.$row['title'].'</strong></h4> 
-				<p>'. substr($row['body'], 0,750) .'...Περισότερα</p>
+				<p>'. substr($row['body'], 0,750) .'...Περισσότερα</p>
 			</div></div></a>
 			<div class="row">
 			<div class="col-md-12">
@@ -1071,7 +1071,7 @@ class FGMembersite
         <div class="col-md-8">
           <a class="ahref" href="presentarticle.php?id=' . $row['id_article'] . '"><h3 class="title">' . $row['title'] . '</h3></a>
           <p class="text-muted"><span class="glyphicon glyphicon-calendar"></span>' . $row['date'] . '</p>
-          <p>' . substr($row['body'], 0,750) . '<a href="presentarticle.php?id=' . $row['id_article'] . '">...Περισότερα</a>
+          <p>' . substr($row['body'], 0,750) . '<a href="presentarticle.php?id=' . $row['id_article'] . '">...Περισσότερα</a>
             </p><p class="text-muted">Γράφτηκε από: <a href="#">' . $row['author'] . '</a></p>
           
         </div>

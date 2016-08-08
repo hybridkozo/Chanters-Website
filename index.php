@@ -13,7 +13,7 @@ if(isset($_GET['code']))
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
 <head>
 <meta charset="utf-8">
-<title>Σύλογος Ιεροψαλτών</title>
+<title>Σύλλογος Ιεροψαλτών</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="style/custom.css">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -32,7 +32,7 @@ $(document).ready(function() {
 <script>
     $(document).ready(function() {
     if (window.location.href.indexOf("history") > -1) {
-        $("#Ο Σύλογος").attr('class', 'dropdown active');
+        $("#Ο Σύλλογος").attr('class', 'dropdown active');
 	}});
 ​
 </script>

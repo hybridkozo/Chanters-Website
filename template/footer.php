@@ -34,7 +34,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<hr>
-			<p style="text-align:center;">© 2016 Σύλογος Ιεροψαλτών Αθηνών, designed by <a href="https://gr.linkedin.com/in/ioannis-kozompolis-373406125">John Kozompolis</a> and George Emmanouil</p>
+			<p style="text-align:center;">© 2016 Σύλλογος Ιεροψαλτών, designed by <a href="https://gr.linkedin.com/in/ioannis-kozompolis-373406125">John Kozompolis</a> and George Emmanouil</p>
 			
 			</div>
 		</div>
